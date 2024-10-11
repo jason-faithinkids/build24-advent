@@ -29,13 +29,13 @@ div#zoom {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    transition: all 1s ease, opacity 0s 1s; /* delay opacity change on transition */
+    transition: width 1s ease, height 1s ease, opacity 0s 1s; /* delay opacity change on transition */
     opacity: 0; /* Hide the stencil by default */
 }
 
 .stencil-overlay.active {
-    width: 2000px;
-    height: 2000px;
-    transition: all 1s ease, opacity 0s;   
+    width: 3000px;
+    height: 3000px;
+    transition: width 1s ease, height 1s ease, opacity 0s;   
     opacity: 1; /* Make it visible during the transition */   
 }

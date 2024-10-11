@@ -21,9 +21,27 @@ function initialiseAdvent() {
 	
 	$('.transition-button').on('click', function() {
         var targetPage = $(this).data('target');
+        var button = $(this);
 
-        // Activate the stencil overlay animation
-        $('.stencil-overlay').addClass('active');
+        if (button.hasClass('day')) {
+	        var buttonOffset = button.offset(); // Get button position relative to the document
+
+	        var buttonWidth = button.outerWidth(); // Get button width
+	        var buttonHeight = button.outerHeight(); // Get button height
+
+	        // Calculate the center of the button
+	        var buttonCenterX = buttonOffset.left + buttonWidth / 2;
+	        var buttonCenterY = buttonOffset.top + buttonHeight / 2;
+
+	        // Position the stencil overlay at the center of the button
+	        // and activate the stencil overlay animation
+	        $('.stencil-overlay').css({
+	            'top': buttonCenterY + 'px',
+	            'left': buttonCenterX + 'px'
+	        });
+	    }
+	    
+	    $('.stencil-overlay').addClass('active');	    
 
         // Wait for the animation to finish, then show the target page
         setTimeout(function() {
