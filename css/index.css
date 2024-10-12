@@ -1,6 +1,10 @@
 body {
     background: url(/img/2024-brick-background2.jpg) repeat;
     background-size: 50%;
+
+    font-family: degular, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 h1 {
@@ -10,10 +14,17 @@ h1 {
     color: white;
 }
 
+h2 {
+    font-family: degular, sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: white;
+}
+
 #content {
     margin-top: 20px;
   margin-left: 20px;
-  text-align: center;
+  text-align: center;  
 }
 
 .day {
@@ -43,6 +54,11 @@ text-align: center;
 
 .entry-content {
   padding: 10px;
+  color: white;
+}
+
+.collect-sticker {
+    color: white;
 }
 
 div#zoom {

@@ -1,14 +1,15 @@
-<div class="entry-header-block entry-header-{{ post.colour }}">
-	<h1>Day {{ post.day }}</h1>
+<div class="entry-header-block entry-header-green">
+	<a href="/" class="btn btn-danger float-end mt-3">&laquo; Back to calendar</a>
+	<h1>Day {{ post.day }}</h1>	
 </div>
 
-<div class="entry-content">
-	{{ post.body | safe }}
+<div class="entry-content container">	
+	{{ post.body | safe }}	
 </div>
 
-<div class="collect-sticker">
-	<h2>Now collect your virtual sticker for today!
-	<p>Touch below to collect your sticker:</p>
+<div class="collect-sticker container">
+	<h2>Time to collect today's digital sticker!</h2>
+	<p>Click to collect your digital sticker and build up your own nativity scene:</p>
 	<div class="sticker-for-collection">
 		<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
 	</div>
