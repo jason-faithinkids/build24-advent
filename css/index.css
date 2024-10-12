@@ -43,11 +43,20 @@ div#zoom {
 
 /* Container for the LEGO brick */
         .lego-brick {
+            border-radius: 5px; /* Slight rounding for a more realistic shape */
+            position: relative; /* To position the studs */
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+        }
+        .lego-brick-4x1 {
             width: 210px; /* Width of the brick */
             height: 80px; /* Height of the brick */
             background-color: #e30613; /* LEGO red color */
-            border-radius: 5px; /* Slight rounding for a more realistic shape */
-            position: relative; /* To position the studs */
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+        }
+        .lego-brick-2x1 {
+            width: 105px; /* Width of the brick */
+            height: 80px; /* Height of the brick */
+            background-color: #237841; /* LEGO red color */
             box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
@@ -62,8 +71,32 @@ div#zoom {
             box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
+        .stud {            
+            height: 10px;
+            border-radius: 2px; /* Make it circular */
+            position: absolute; /* Position it relative to the brick */
+            top: -8px; /* Position to appear above the brick */
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+        }
+
+        .lego-brick-4x1 .stud {
+            width: 20%; /* Diameter of the stud */
+            background-color: #e30613; /* Same color as the brick */
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+        }
+
         /* Positioning each stud */
-        .stud:nth-child(1) { left: 5%; }
-        .stud:nth-child(2) { left: 28.75%; }
-        .stud:nth-child(3) { left: 52.5%; }        
-        .stud:nth-child(4) { left: 76.25%; }
+        .lego-brick-4x1 .stud:nth-child(1) { left: 5%; }
+        .lego-brick-4x1 .stud:nth-child(2) { left: 28.75%; }
+        .lego-brick-4x1 .stud:nth-child(3) { left: 52.5%; }        
+        .lego-brick-4x1 .stud:nth-child(4) { left: 76.25%; }
+
+        .lego-brick-2x1 .stud {
+            width: 35%; /* Diameter of the stud */
+            background-color: #237841; /* Same color as the brick */
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+        }
+
+        /* Positioning each stud */
+        .lego-brick-2x1 .stud:nth-child(1) { left: 10%; }
+        .lego-brick-2x1 .stud:nth-child(2) { left: 55%; }        

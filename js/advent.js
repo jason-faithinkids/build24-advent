@@ -38,7 +38,7 @@ function loadTargetPageContent(targetPage, callback) {
 	}, 1000);
 }
 
-function getEndTransition(targetPage) {	
+function getEndTransition(targetPage, stencil) {	
 	return function() {
 		var toShow = null;		
 
@@ -54,7 +54,11 @@ function getEndTransition(targetPage) {
         if (toShow != null) {
         	$('.page-content').hide(); // Hide all pages
         	toShow.show();
-        	$('.stencil-overlay').removeClass('active'); // Reset the overlay
+        	$(stencil).removeClass('active'); // Reset the overlay
+
+        	setTimeout(function() {
+        		$(stencil).hide();
+        	}, 1000);
         }        
 	};
 }
@@ -67,11 +71,18 @@ function initialiseAdvent() {
         var targetPage = $(this).data('target');
         var button = $(this);
 
+        var stencil = $(this).data('stencil');
+        if (stencil == null) {
+        	stencil = "#stencil-4x1";
+        }
+
+        $(stencil).show();
+
         if (targetPage != '#content') {
-        	loadTargetPageContent(targetPage, getEndTransition(targetPage));
+        	loadTargetPageContent(targetPage, getEndTransition(targetPage, stencil));
         }  else {
         	setTimeout(function() {				
-				getEndTransition(targetPage)();
+				getEndTransition(targetPage, stencil)();
 			}, 1000);
         }
 
@@ -87,12 +98,12 @@ function initialiseAdvent() {
 
 	        // Position the stencil overlay at the center of the button
 	        // and activate the stencil overlay animation
-	        $('.stencil-overlay').css({
+	        $(stencil).css({
 	            'top': buttonCenterY + 'px',
 	            'left': buttonCenterX + 'px'
 	        });
 	    }
 
-	    $('.stencil-overlay').addClass('active');	            
+	    $(stencil).addClass('active');	            
     });
 }

@@ -7,14 +7,18 @@
 
 
 	<div class="row">
-		<button class="day transition-button lego-brick" data-target="day1">
+		<button class="day transition-button lego-brick lego-brick-4x1" data-target="day1" data-stencil="#stencil-4x1">
 			1
 			<div class="stud"></div>
 		    <div class="stud"></div>
 		    <div class="stud"></div>
 		    <div class="stud"></div>
 		</button>
-		<button class="day transition-button" data-target="day2">2</button>
+		<button class="day transition-button lego-brick lego-brick-2x1" data-target="day2" data-stencil="#stencil-2x1">
+			2
+			<div class="stud"></div>
+		    <div class="stud"></div>
+		</button>
 		<button class="day transition-button" data-target="day3">3</button>
 		<button class="day transition-button" data-target="day4">4</button>
 		<button class="day transition-button" data-target="day5">5</button>
@@ -52,9 +56,14 @@
     <button class="transition-button" data-target="#content">Go to Index</button>
 </div>
 
-<div class="lego-brick stencil-overlay">
+<div class="lego-brick lego-brick-4x1 stencil-overlay" id="stencil-4x1">
     <div class="stud"></div>
     <div class="stud"></div>
     <div class="stud"></div>
     <div class="stud"></div>
+</div>
+
+<div class="lego-brick lego-brick-2x1 stencil-overlay" id="stencil-2x1">
+    <div class="stud"></div>
+    <div class="stud"></div>    
 </div>
