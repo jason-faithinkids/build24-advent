@@ -55,7 +55,7 @@ function initialiseStickerbook() {
     if (window.top.location.hash.length > 0) {
     	// Get everything except the hash
     	var anchor = window.top.location.hash.split('#')[1];
-    	if ($('#sticker-' + anchor).hasClass('sticker')) {
+    	if ($('#sticker-' + anchor).hasClass('sticker')) {    	
     		$('#sticker-' + anchor).show();
     	}
     }

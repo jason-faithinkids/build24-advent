@@ -7,15 +7,11 @@ permalink: /stickerbook/
 <p>Drag and place the stickers you have collected so far.</p>
 
 <div id="stickers" class="row">
-  <div class="sticker" id="sticker-day1-08df67">
-    <img src="/img/stickers/Camel1.png" draggable="false">
-  </div>
-  <div class="sticker" id="sticker-day2-ac423f">
-    <img src="/img/stickers/Angel1.png" draggable="false">
-  </div>
-  <div class="sticker" id="sticker-day3-18aec8">
-    <img src="/img/stickers/manger.png" draggable="false">
-  </div>
+  {% for sticker in post %}
+    <div class="sticker" id="sticker-{{sticker.day}}">
+      <img src="{{sticker.nativity_figure}}" draggable="false">
+    </div>
+  {% endfor %}
 </div>
 
 <div id="stable">
