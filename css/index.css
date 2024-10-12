@@ -130,6 +130,13 @@ div#zoom {
     cursor: move;
     display: none;
 }
-.sticker img {
+.sticker img, .sticker-for-collection img {
     max-width: 200px;
 }
+
+.sticker-for-collection {
+    filter: drop-shadow(5px 5px 10px #555B);
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
