@@ -1,5 +1,6 @@
 // fetch WordPress posts
 const wordpressAPI = 'https://kingdomcode.faithinkids.org/wp-json/wp/v2/nativity?per_page=100';
+const fetch = require('node-fetch');
 
 
 // fetch list of WordPress posts
