@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-home
+---
+{{ content | safe }}
+
+<script>
+// self executing function here
+(function() {
+    initialiseStickerbook();
+})();
+</script>

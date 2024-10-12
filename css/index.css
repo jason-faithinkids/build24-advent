@@ -120,3 +120,16 @@ div#zoom {
         /* Positioning each stud */
         .lego-brick-2x1 .stud:nth-child(1) { left: 10%; }
         .lego-brick-2x1 .stud:nth-child(2) { left: 55%; }        
+
+
+.sticker {
+    width: 200px;
+    margin-right: 10px;
+    display: inline-block;
+    position: absolute;
+    cursor: move;
+    display: none;
+}
+.sticker img {
+    max-width: 200px;
+}
