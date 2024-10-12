@@ -1,7 +1,19 @@
+body {
+    background: url(/img/2024-brick-background2.jpg) repeat;
+    background-size: 50%;
+}
+
+h1 {
+    font-family: degular, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+}
+
 #content {
-  width: 5000px;
-  height: 4000px;  
+    margin-top: 20px;
   margin-left: 20px;
+  text-align: center;
 }
 
 .day {
@@ -60,30 +72,36 @@ div#zoom {
     opacity: 1; /* Make it visible during the transition */       
 }
 
+button.lego-brick {
+    border-top-color: #000c;
+    border-right-color: #000c;
+    border-bottom-color: #000c;
+    border-left-color: #000c;
+}
 
 /* Container for the LEGO brick */
         .lego-brick {
             border-radius: 5px; /* Slight rounding for a more realistic shape */
             position: relative; /* To position the studs */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+            
         }
         .lego-brick-4x1 {
             width: 210px; /* Width of the brick */
             height: 80px; /* Height of the brick */
             background-color: #e30613; /* LEGO red color */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+            
         }
         .lego-brick-3x1 {
             width: 158px; /* Width of the brick */
             height: 80px; /* Height of the brick */
             background-color: #e30613; /* LEGO red color */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+            
         }
         .lego-brick-2x1 {
             width: 105px; /* Width of the brick */
             height: 80px; /* Height of the brick */
             background-color: #237841; /* LEGO red color */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+            
         }
 
         /* Studs on the LEGO brick */
@@ -141,11 +159,17 @@ div#zoom {
 .brick-collection .lego-brick {
     position: absolute;
     color: white;
+    font-family: degular, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
     font-weight: bold;
 }
 
 .brick-collection {
     position: relative;
+    width: 550px;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 .brick-collection .lego-brick-3x1:nth-child(1) {
