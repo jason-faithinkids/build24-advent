@@ -199,107 +199,108 @@ a:visited.lego-brick {
 
 .brick-collection .lego-brick-3x1:nth-child(1) {
     left: 285px;
-    top: 360px;
+    top: 300px; /* Row 4 */
 }
 .brick-collection .lego-brick-3x1:nth-child(2) {
     left: 115px;
-    top: 360px;
+
+    top: 300px; /* Row 4 */
 }
 .brick-collection .lego-brick-3x1:nth-child(3) {
     left: 285px;
-    top: 540px;
+    top: 450px; /* Row 6 */
 }
 .brick-collection .lego-brick-3x1:nth-child(4) {
     left: 115px;
-    top: 540px;
+    top: 450px; /* Row 6 */
 }
 
 .brick-collection .lego-brick-2x1:nth-child(5) {
     /* Day 1 */
     left: 0px;
-    top: 550px;
+    top: 460px; /* Row 6a */
 }
 
 .brick-collection .lego-brick-2x1:nth-child(6) {
     /* Day 3 */
     left: 227px;
-    top: 630px;
+    top: 525px; /* Row 7 */
 }
 .brick-collection .lego-brick-2x1:nth-child(7) {
     left: 60px;
-    top: 190px;
+    top: 160px; /* Row 2 */
 }
 .brick-collection .lego-brick-2x1:nth-child(8) {
     left: 450px;
-    top: 460px;
+    top: 385px; /* Row 5a */
 }
 .brick-collection .lego-brick-2x1:nth-child(9) {
     left: 0px;
-    top: 370px;
+    top: 310px; /* Row 4a */
 }
 .brick-collection .lego-brick-2x1:nth-child(10) {
     left: 100px;
-    top: 550px;
+    top: 550px; /* Row 6a */
 }
 .brick-collection .lego-brick-4x1 {
     left: 180px;
-    top: 10px;
+    top: 10px; /* Row 0 */
 }
 .brick-collection .lego-brick-2x1:nth-child(11) {
     left: 450px;
-    top: 280px;
+    top: 235px; /* Row 3 */
 }
 .brick-collection .lego-brick-2x1:nth-child(12) {
     left: 340px;
-    top: 100px;
+    top: 85px; /* Row 1 */
 }
 .brick-collection .lego-brick-2x1:nth-child(13) {
     left: 115px;
-    top: 450px;
+    top: 375px; /* Row 5 */
 }
 .brick-collection .lego-brick-2x1:nth-child(14) {
     left: 450px;
-    top: 640px;
+    top: 535px; /* Row 7a */
 }
 .brick-collection .lego-brick-2x1:nth-child(15) {
     left: 115px;
-    top: 100px;
+    top: 85px; /* Row 1 */
 }
 .brick-collection .lego-brick-2x1:nth-child(16) {
     left: 0px;
-    top: 640px;
+    top: 535px; /* Row 7a */
 }
 .brick-collection .lego-brick-2x1:nth-child(17) {
     left: 450px;
-    top: 370px;
+    top: 310px; /* Row 4a */
 }
 .brick-collection .lego-brick-2x1:nth-child(18) {
     left: 450px;
-    top: 550px;
+    top: 460px; /* Row 6a */
 }
 .brick-collection .lego-brick-2x1:nth-child(19) {
     left: 390px;
-    top: 190px;
+    top: 160px; /* Row 2 */
 }
 .brick-collection .lego-brick-2x1:nth-child(20) {
     left: 0px;
-    top: 280px;
+    top: 235px; /* Row 3 */
 }
 .brick-collection .lego-brick-2x1:nth-child(21) {
     left: 340px;
-    top: 630px;
+    top: 525px; /* Row 7 */
 }
 .brick-collection .lego-brick-2x1:nth-child(22) {
     left: 340px;
-    top: 450px;
+    top: 375px; /* Row 5 */
 }
 .brick-collection .lego-brick-2x1:nth-child(23) {
     left: 0px;
-    top: 460px;
+    top: 385px; /* Row 5a */
 }
 .brick-collection .lego-brick-2x1:nth-child(24) {
     left: 115px;
-    top: 630px;
+    top: 525px; /* Row 7 */
 }
 
 .sticker {
