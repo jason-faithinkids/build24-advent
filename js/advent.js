@@ -38,7 +38,7 @@ function loadTargetPageContent(targetPage, callback) {
 	}, 1000);
 }
 
-function getEndTransition(targetPage) {
+function getEndTransition(targetPage) {	
 	return function() {
 		var toShow = null;		
 
