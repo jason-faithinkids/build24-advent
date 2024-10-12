@@ -1,18 +1,18 @@
 function initialiseStickerbook() {
 	let draggingElement = null;
     let offsetX, offsetY;
+    let startedDrag = false;
+	var tapped=false;
 
-    // Mouse down event to start dragging
-    $('.sticker').on('mousedown', function(e) {
-        draggingElement = this;
-        offsetX = e.clientX - $(this).position().left;
-        offsetY = e.clientY - $(this).position().top;
-        $(this).css('cursor', 'grabbing');
-    });
-
-    // Mouse move event to handle dragging
-    $(document).on('mousemove', function(e) {
-        if (draggingElement != null) {
+    let startTouch = function(_this, e) {
+    	draggingElement = _this;
+        offsetX = e.clientX - $(_this).position().left;
+        offsetY = e.clientY - $(_this).position().top;
+        $(_this).css('cursor', 'grabbing');
+        startedDrag = false;
+    }
+    let moveTouch = function(e) {
+    	if (draggingElement != null) {
         	var newX = e.clientX - offsetX;
         	var newY = e.clientY - offsetY;
 
@@ -24,12 +24,50 @@ function initialiseStickerbook() {
             // Store this
             window.localStorage.setItem(draggingElement.id + "-x", newX);
             window.localStorage.setItem(draggingElement.id + "-y", newY)            
+
+            if (!startedDrag) {
+            	startedDrag = true;            	
+            	document.getElementById('take-sticker1').play();
+            }
         }
+    }
+
+    // Mouse down event to start dragging
+    $('.sticker').on('mousedown', function(e) {
+        startTouch(this, e);
+    });
+    $('.sticker').on('touchstart', function(e) {    	
+        startTouch(this, e.touches[0]);
+
+        if(!tapped){ //if tap is not set, set up single tap
+	      tapped=setTimeout(function(){
+	          tapped=null
+	          //insert things you want to do when single tapped
+	      },300);   //wait 300ms then run single click code
+	    } else {    //tapped within 300ms of last tap. double tap
+	      clearTimeout(tapped); //stop single tap callback
+	      tapped=null
+	      //insert things you want to do when double tapped
+	      $(this).toggleClass('flipped');
+	    }
     });
 
+    // Mouse move event to handle dragging
+    $(document).on('mousemove', function(e) {    	
+        moveTouch(e);
+    });
+    $(document).on('touchmove', function(e) {    	    	
+        moveTouch(e.touches[0]);       
+    });
+
+    $('.sticker').on('dblclick', function(e) {    	
+    	$(this).toggleClass('flipped');
+    });    
+
     // Mouse up event to stop dragging
-    $(document).on('mouseup', function() {
+    $(document).on('mouseup touchend', function() {
     	$(draggingElement).css('cursor', 'move');
+    	document.getElementById('drop-sticker').play();
         draggingElement = null;        
     });
 
@@ -39,9 +77,7 @@ function initialiseStickerbook() {
     	var savedStateX = window.localStorage.getItem(el.id + "-x");
     	var savedStateY = window.localStorage.getItem(el.id + "-y");
     	
-    	if (savedStateX != null) {
-    		console.log(el.id);
-    		console.log(savedStateX);
+    	if (savedStateX != null) {    		
     		$(el).css({
                 left: savedStateX + 'px',
                 top: savedStateY + 'px'
