@@ -3,18 +3,15 @@ function initialiseStickerbook() {
     let offsetX, offsetY;
     let startedDrag = false;
 
-    // Mouse down event to start dragging
-    $('.sticker').on('mousedown', function(e) {
-        draggingElement = this;
-        offsetX = e.clientX - $(this).position().left;
-        offsetY = e.clientY - $(this).position().top;
-        $(this).css('cursor', 'grabbing');
+    let startTouch = function(_this, e) {
+    	draggingElement = _this;
+        offsetX = e.clientX - $(_this).position().left;
+        offsetY = e.clientY - $(_this).position().top;
+        $(_this).css('cursor', 'grabbing');
         startedDrag = false;
-    });
-
-    // Mouse move event to handle dragging
-    $(document).on('mousemove', function(e) {
-        if (draggingElement != null) {
+    }
+    let moveTouch = function(e) {
+    	if (draggingElement != null) {
         	var newX = e.clientX - offsetX;
         	var newY = e.clientY - offsetY;
 
@@ -32,10 +29,26 @@ function initialiseStickerbook() {
             	document.getElementById('take-sticker1').play();
             }
         }
+    }
+
+    // Mouse down event to start dragging
+    $('.sticker').on('mousedown', function(e) {
+        startTouch(this, e);
+    });
+    $('.sticker').on('touchstart', function(e) {    	
+        startTouch(this, e.touches[0]);
+    });
+
+    // Mouse move event to handle dragging
+    $(document).on('mousemove', function(e) {    	
+        moveTouch(e);
+    });
+    $(document).on('touchmove', function(e) {    	
+        moveTouch(e.touches[0]);
     });
 
     // Mouse up event to stop dragging
-    $(document).on('mouseup', function() {
+    $(document).on('mouseup touchend', function() {
     	$(draggingElement).css('cursor', 'move');
     	document.getElementById('drop-sticker').play();
         draggingElement = null;        
