@@ -64,46 +64,46 @@ function getEndTransition(targetPage, stencil) {
 }
 
 function initialiseAdvent() {
-	$('#zoom-in').click(function() { zoomIn(); });
-	$('#zoom-out').click(function() { zoomOut(); });
+	// $('#zoom-in').click(function() { zoomIn(); });
+	// $('#zoom-out').click(function() { zoomOut(); });
 	
-	$('.transition-button').on('click', function() {
-        var targetPage = $(this).data('target');
-        var button = $(this);
+	// $('.transition-button').on('click', function() {
+    //     var targetPage = $(this).data('target');
+    //     var button = $(this);
 
-        var stencil = $(this).data('stencil');
-        if (stencil == null) {
-        	stencil = "#stencil-4x1";
-        }
+    //     var stencil = $(this).data('stencil');
+    //     if (stencil == null) {
+    //     	stencil = "#stencil-4x1";
+    //     }
 
-        $(stencil).show();
+    //     $(stencil).show();
 
-        if (targetPage != '#content') {
-        	loadTargetPageContent(targetPage, getEndTransition(targetPage, stencil));
-        }  else {
-        	setTimeout(function() {				
-				getEndTransition(targetPage, stencil)();
-			}, 1000);
-        }
+    //     if (targetPage != '#content') {
+    //     	loadTargetPageContent(targetPage, getEndTransition(targetPage, stencil));
+    //     }  else {
+    //     	setTimeout(function() {				
+	// 			getEndTransition(targetPage, stencil)();
+	// 		}, 1000);
+    //     }
 
-        if (button.hasClass('day')) {
-	        var buttonOffset = button.offset(); // Get button position relative to the document
+    //     if (button.hasClass('day')) {
+	//         var buttonOffset = button.offset(); // Get button position relative to the document
 
-	        var buttonWidth = button.outerWidth(); // Get button width
-	        var buttonHeight = button.outerHeight(); // Get button height
+	//         var buttonWidth = button.outerWidth(); // Get button width
+	//         var buttonHeight = button.outerHeight(); // Get button height
 
-	        // Calculate the center of the button
-	        var buttonCenterX = buttonOffset.left + buttonWidth / 2;
-	        var buttonCenterY = buttonOffset.top + buttonHeight / 2;
+	//         // Calculate the center of the button
+	//         var buttonCenterX = buttonOffset.left + buttonWidth / 2;
+	//         var buttonCenterY = buttonOffset.top + buttonHeight / 2;
 
-	        // Position the stencil overlay at the center of the button
-	        // and activate the stencil overlay animation
-	        $(stencil).css({
-	            'top': buttonCenterY + 'px',
-	            'left': buttonCenterX + 'px'
-	        });
-	    }
+	//         // Position the stencil overlay at the center of the button
+	//         // and activate the stencil overlay animation
+	//         $(stencil).css({
+	//             'top': buttonCenterY + 'px',
+	//             'left': buttonCenterX + 'px'
+	//         });
+	//     }
 
-	    $(stencil).addClass('active');	            
-    });
+	//     $(stencil).addClass('active');	            
+    // });
 }

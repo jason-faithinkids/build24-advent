@@ -1,3 +1,7 @@
+@view-transition {
+    navigation: auto;
+}
+
 body {
     background: url(/img/2024-brick-background2.jpg) repeat;
     background-size: 50%;
@@ -88,11 +92,15 @@ div#zoom {
     opacity: 1; /* Make it visible during the transition */       
 }
 
-button.lego-brick {
-    border-top-color: #000c;
-    border-right-color: #000c;
-    border-bottom-color: #000c;
-    border-left-color: #000c;
+.lego-brick {
+    display: block;
+}
+
+a:link.lego-brick,
+a:hover.lego-brick,
+a:active.lego-brick,
+a:visited.lego-brick {
+    text-decoration: none;
 }
 
 /* Container for the LEGO brick */
