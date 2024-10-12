@@ -2,6 +2,7 @@
 title: Day 2
 description: Content for Day 2
 date: 2024-12-02
+color: green
 cover: 
 layout: layouts/post.njk
 ---

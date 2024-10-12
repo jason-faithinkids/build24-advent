@@ -13,6 +13,26 @@ z-index: 1;
 text-align: center;
 }
 
+.entry-header-block {  
+  padding: 50px;
+}
+
+.entry-header-red {
+  background-color: #e30613;
+}
+
+.entry-header-green {
+  background-color: #237841;
+}
+
+.entry-header-block h1 {
+  color: white;
+}
+
+.entry-content {
+  padding: 10px;
+}
+
 div#zoom {
   position: fixed;
   top: 10px;
