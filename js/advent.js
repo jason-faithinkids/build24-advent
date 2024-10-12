@@ -15,6 +15,50 @@ function zoomOut() {
 	$('#content').animate({ 'zoom': 1 }, 400);
 }
 
+var hasTransitionEnded = false;
+
+function loadTargetPageContent(targetPage, callback) {
+	$('#page-content-body').html('');
+	hasTransitionEnded = false;
+
+	// Make an AJAX class to fetch the target page
+	$.get('/posts/' + targetPage, function(data) {
+		var parser = new DOMParser();
+		var doc = parser.parseFromString(data, 'text/html');
+		var pageContent = doc.body.innerHTML;
+		
+		$('#page-content-body').html(pageContent);
+
+		callback();
+	});
+
+	setTimeout(function() {
+		hasTransitionEnded = true;
+		callback();
+	}, 1000);
+}
+
+function getEndTransition(targetPage) {
+	return function() {
+		var toShow = null;		
+
+        if (targetPage == '#content') {
+        	toShow = $(targetPage);
+        } else {
+        	// Check if we have finished loading the content
+        	if (($('#page-content-body').html() != '') && (hasTransitionEnded)) {
+        		toShow = $('#page2');
+        	}        	
+        }
+
+        if (toShow != null) {
+        	$('.page-content').hide(); // Hide all pages
+        	toShow.show();
+        	$('.stencil-overlay').removeClass('active'); // Reset the overlay
+        }        
+	};
+}
+
 function initialiseAdvent() {
 	$('#zoom-in').click(function() { zoomIn(); });
 	$('#zoom-out').click(function() { zoomOut(); });
@@ -22,6 +66,14 @@ function initialiseAdvent() {
 	$('.transition-button').on('click', function() {
         var targetPage = $(this).data('target');
         var button = $(this);
+
+        if (targetPage != '#content') {
+        	loadTargetPageContent(targetPage, getEndTransition(targetPage));
+        }  else {
+        	setTimeout(function() {				
+				getEndTransition(targetPage)();
+			}, 1000);
+        }
 
         if (button.hasClass('day')) {
 	        var buttonOffset = button.offset(); // Get button position relative to the document
@@ -40,14 +92,7 @@ function initialiseAdvent() {
 	            'left': buttonCenterX + 'px'
 	        });
 	    }
-	    
-	    $('.stencil-overlay').addClass('active');	    
 
-        // Wait for the animation to finish, then show the target page
-        setTimeout(function() {
-            $('.page-content').hide(); // Hide all pages
-            $(targetPage).show();      // Show the target page
-            $('.stencil-overlay').removeClass('active'); // Reset the overlay
-        }, 1000); // Matches the duration of the CSS transition
+	    $('.stencil-overlay').addClass('active');	            
     });
 }
