@@ -1,6 +1,7 @@
 function initialiseStickerbook() {
 	let draggingElement = null;
     let offsetX, offsetY;
+    let startedDrag = false;
 
     // Mouse down event to start dragging
     $('.sticker').on('mousedown', function(e) {
@@ -8,6 +9,7 @@ function initialiseStickerbook() {
         offsetX = e.clientX - $(this).position().left;
         offsetY = e.clientY - $(this).position().top;
         $(this).css('cursor', 'grabbing');
+        startedDrag = false;
     });
 
     // Mouse move event to handle dragging
@@ -24,12 +26,18 @@ function initialiseStickerbook() {
             // Store this
             window.localStorage.setItem(draggingElement.id + "-x", newX);
             window.localStorage.setItem(draggingElement.id + "-y", newY)            
+
+            if (!startedDrag) {
+            	startedDrag = true;            	
+            	document.getElementById('take-sticker1').play();
+            }
         }
     });
 
     // Mouse up event to stop dragging
     $(document).on('mouseup', function() {
     	$(draggingElement).css('cursor', 'move');
+    	document.getElementById('drop-sticker').play();
         draggingElement = null;        
     });
 
@@ -39,9 +47,7 @@ function initialiseStickerbook() {
     	var savedStateX = window.localStorage.getItem(el.id + "-x");
     	var savedStateY = window.localStorage.getItem(el.id + "-y");
     	
-    	if (savedStateX != null) {
-    		console.log(el.id);
-    		console.log(savedStateX);
+    	if (savedStateX != null) {    		
     		$(el).css({
                 left: savedStateX + 'px',
                 top: savedStateY + 'px'
