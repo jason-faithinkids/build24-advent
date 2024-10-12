@@ -4,8 +4,15 @@
 		<h1>Day {{ post.day }}</h1>
 	</div>
 
+
 	<div class="entry-content container">
-		{{ post.body | nl2br | safe }}
+	{% if post.podcast %}
+		<video controls width="100%" autoplay>
+			<source src="{{post.podcast}}" type="video/mp4" />
+		</video>
+  {% endif %}
+	{{ post.body | nl2br | safe }}
+
 	</div>
 
 	<div class="collect-sticker container">
