@@ -1,0 +1,10 @@
+---
+pagination:
+  data: "post"
+  size: 1
+  alias: post
+layout: layouts/base.njk
+templateClass: tmpl-post
+permalink: "/posts/{{ post.day }}/index.html"
+---
+{% include "desain/post.njk" %}

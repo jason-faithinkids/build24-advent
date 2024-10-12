@@ -1,7 +1,7 @@
-<div class="entry-header-block entry-header-{{ color }}">
-	<h1>{{ title }}</h1>
+<div class="entry-header-block entry-header-{{ post.colour }}">
+	<h1>Day {{ post.day }}</h1>
 </div>
 
 <div class="entry-content">
-	{{ content | safe }}
+	{{ post.body | safe }}
 </div>
