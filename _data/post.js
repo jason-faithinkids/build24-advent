@@ -17,9 +17,8 @@ async function wpPosts() {
         const day =  {
           id: p.id,
           body: p.body,
-          video_start: p.video_start,
-          podcast: p.podcast,
-          video_end: p.video_end,
+          podcast: p.podcast.endsWith('mp4') ? '' : p.podcast,
+          video: p.podcast.endsWith('mp4') ? p.podcast : '',
           thumbnail: p.thumbnail,
           picture: p.picture,
           nativity_figure: p.nativity_figure,
@@ -38,6 +37,8 @@ async function wpPosts() {
 }
 
 const randomColour = () => Math.floor(Math.random()*16777215).toString(16);
+
+const podcastIsMp4 = (url) => url.endsWith('mp4')
 
 
 // process WordPress posts

@@ -5,31 +5,34 @@
 	</div>
 
 
-	<div class="entry-content container">
-
-	{% if post.podcast %}
-		<div class="row">
-			<video controls width="100%" autoplay>
-				<source src="{{post.podcast}}" type="video/mp4" />
-			</video>
-		</div>
-  {% endif %}
-		<div class="row">
+	<div class="container content-center">
+		{% if post.video %}
+			<div class="row entry-content">
+				<video controls width="100%" autoplay>
+					<source src="{{post.video}}" type="video/mp4" />
+				</video>
+			</div>
+		{% endif %}
+		<div class="row entry-content">
 			<div class="col-sm-8">
 				{{ post.body | nl2br | safe }}
+				{% if post.podcast %}
+					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>
+				{% endif %}
 			</div>
 			<div class="col-sm-4">
 				<img width="100%" src="{{post.picture}}"/>
 			</div>
 		</div>
 
-	</div>
 
-	<div class="collect-sticker container">
-		<h2>Time to collect today's digital sticker!</h2>
-		<p>Click to collect your digital sticker and build up your own nativity scene:</p>
-		<div class="sticker-for-collection">
-			<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
+		<div class="collect-sticker col-xl-6 entry-content">
+			<h2>Time to collect today's digital sticker!</h2>
+			<p>Click to collect your digital sticker and build up your own nativity scene:</p>
+			<div class="sticker-for-collection">
+				<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
+			</div>
 		</div>
 	</div>
+
 </div>
