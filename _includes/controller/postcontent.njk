@@ -4,7 +4,6 @@
 		<h1>Day {{ post.day }}</h1>
 	</div>
 
-
 	<div class="container content-center">
 		{% if post.video %}
 			<div class="row entry-content">
@@ -13,6 +12,7 @@
 				</video>
 			</div>
 		{% endif %}
+
 		<div class="row entry-content">
 			<div class="col-sm-8">
 				{{ post.body | nl2br | safe }}
@@ -25,12 +25,13 @@
 			</div>
 		</div>
 
-
-		<div class="collect-sticker col-xl-6 entry-content">
-			<h2>Time to collect today's digital sticker!</h2>
-			<p>Click to collect your digital sticker and build up your own nativity scene:</p>
-			<div class="sticker-for-collection">
-				<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
+		<div class="row">
+			<div class="collect-sticker col-lg-6 offset-lg-3 entry-content">
+				<h2>Time to collect today's digital sticker!</h2>
+				<p>Click to collect your digital sticker and build up your own nativity scene:</p>
+				<div class="sticker-for-collection">
+					<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,16 @@
+---
+layout: layouts/stickerbook.njk
+permalink: /stickerbook/frame.html
+---
+
+<div id="stickers" class="row">
+  {% for sticker in post %}
+    <div class="sticker" id="sticker-{{sticker.day}}">
+      <img src="{{sticker.nativity_figure}}" draggable="false">
+    </div>
+  {% endfor %}
+</div>
+
+<div id="stable">
+  <img src="/img/stickers/Stable4.png" class="stable-bg" draggable="false">
+</div>

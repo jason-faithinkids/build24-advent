@@ -6,13 +6,32 @@ body {
     background: url(/img/2024-brick-background2.jpg) repeat;
     background-size: 50%;
 
-    font-family: degular, sans-serif;
+    --e-global-color-primary: #009CEE;
+    --e-global-color-secondary: #FFB400;
+    --e-global-color-text: #2A2A2A;
+    --e-global-color-accent: #FF6261;
+    --e-global-color-fb78e7d: #FDFBF2;
+    --e-global-color-15ef1d3: #FFFFFF;
+    --e-global-color-481e2a1: #13495D;
+    --e-global-color-7ff8c7e: #FFB400;
+    --e-global-color-b59cf79: #00C380;
+    --e-global-color-90f614b: #009CEE;
+    --e-global-color-dfd7c75: #007E83;
+    --e-global-typography-primary-font-family: "degular";
+    --e-global-typography-primary-font-weight: 600;
+    --e-global-typography-secondary-font-family: "degular";
+    --e-global-typography-secondary-font-weight: 400;
+    --e-global-typography-text-font-family: "degular";
+    --e-global-typography-text-font-weight: 400;
+    --e-global-typography-accent-font-family: "degular";
+    --e-global-typography-accent-font-weight: 500;
+    font-family: "degular", Sans-serif;
     font-size: 20px;
-    font-weight: 400;
+    line-height: 1.6em;
 }
 
 h1 {
-    font-family: degular, sans-serif;
+    font-family: degular, sans-serf;
     font-size: 48px;
     font-weight: 800;
 }
@@ -56,8 +75,9 @@ text-align: center;
 }
 
 .entry-content {
+  margin-top:13px;
+  margin-bottom:13px;
   padding: 20px;
-  margin: 10px;
   color: black;
   border-radius: 10px;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.8); /* Inner shadow for a 3D effect */
@@ -65,7 +85,7 @@ text-align: center;
 }
 
 .collect-sticker {
-    text-align: center;
+  text-align: center;
 }
 
 div#zoom {
@@ -327,7 +347,7 @@ a:visited.lego-brick {
 }
 
 div#stable img {
-    max-width: 100%;
+    width: 2000 px;
 }
 
 .grow { transition: all .2s ease-in-out; }
