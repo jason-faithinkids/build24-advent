@@ -318,8 +318,16 @@ a:visited.lego-brick {
     max-width: 200px;
 }
 
+.sticker.flipped {
+    transform: scaleX(-1.0);
+}
+
 .sticker-for-collection {
     filter: drop-shadow(5px 5px 10px #555B);
+}
+
+div#stable img {
+    max-width: 100%;
 }
 
 .grow { transition: all .2s ease-in-out; }
