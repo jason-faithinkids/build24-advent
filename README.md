@@ -14,7 +14,8 @@ There is support for [build-hooks](https://docs.netlify.com/configure-builds/bui
 
 
 ## WordPress plugin
-A Custom post type called 'nativity' has been created using the Wordpress plugin found in `./wordpress/`. This has several fields, some of which we didn't use. 
+A Custom post type called 'nativity' has been created using the Wordpress plugin found in `./wordpress/`. This has several fields, some of which we didn't use. It may contain some changes that haven't been tested so give it a check over before you load it into your WordPress
+
 ### Podcast url hack
 The `podcast` field has been co-opted to hold video URLs. `_data/post.js` then checks for `.mp4` endings and assigns the value to either `video` or `podcast` in the object used in the njk templates (As I said - hackathon!)
 
@@ -29,3 +30,7 @@ npm run serve
 ```
 
 That should give you a web server running at localhost:8080 that automatically updates when you make changes
+
+
+##Stickerbook
+this uses a fair bit of js to move stuff around and remember where it was put. it should be straightforward to change the background. the stickers are all from the CMS, each day can be assigned an image url called `nativity_figure`
