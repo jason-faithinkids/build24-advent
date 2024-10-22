@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/995b6ae7-e381-4615-868d-aef36f969d59/deploy-status)](https://app.netlify.com/sites/christmasbuildup/deploys)
+
 # Christmas BuildUp
 > DISCLAIMER: This was produced as part of a hackathon, and so if any of it feels hacked together, that is precisely what has happened.
 
