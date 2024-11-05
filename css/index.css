@@ -52,8 +52,6 @@ h2 {
 .day {
 width: 100px;
 height: 100px;
-background-color: green;
-margin: 10px;
 z-index: 1;
 text-align: center;
 }
@@ -75,12 +73,14 @@ text-align: center;
 }
 
 .entry-content {
+  display: inline-block;
   margin-top:13px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-bottom:13px;
-  padding: 20px;
+  padding: 30px;
   color: black;
   border-radius: 10px;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.8); /* Inner shadow for a 3D effect */
   background-color: whitesmoke;
 }
 
@@ -116,7 +116,7 @@ div#zoom {
 }
 
 .lego-brick {
-    display: block;
+    display: inline-block;
 }
 
 a:link.lego-brick,
@@ -132,34 +132,25 @@ a:visited.lego-brick {
             position: relative; /* To position the studs */
             
         }
-        .lego-brick-4x1 {
-            width: 210px; /* Width of the brick */
-            height: 60px; /* Height of the brick */
-            background-color: #e30613; /* LEGO red color */
-            
-        }
         .lego-brick-3x1 {
             width: 158px; /* Width of the brick */
             height: 60px; /* Height of the brick */
-            background-color: #e30613; /* LEGO red color */
-            
+            border: 2px dashed #FFF;
         }
         .lego-brick-2x1 {
             width: 105px; /* Width of the brick */
             height: 60px; /* Height of the brick */
-            background-color: #237841; /* LEGO red color */
-            
+            border: 2px dashed #FFF;
+            border-spacing: 5px;
         }
 
         /* Studs on the LEGO brick */
         .stud {
             width: 20%; /* Diameter of the stud */
             height: 10px;
-            background-color: #e30613; /* Same color as the brick */
             border-radius: 2px; /* Make it circular */
             position: absolute; /* Position it relative to the brick */
             top: -8px; /* Position to appear above the brick */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
         .stud {            
@@ -167,13 +158,12 @@ a:visited.lego-brick {
             border-radius: 2px; /* Make it circular */
             position: absolute; /* Position it relative to the brick */
             top: -8px; /* Position to appear above the brick */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
+            border: 2px dashed #FFF;
+            border-bottom: none;
         }
 
         .lego-brick-4x1 .stud {
             width: 20%; /* Diameter of the stud */
-            background-color: #e30613; /* Same color as the brick */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
         /* Positioning each stud */
@@ -184,8 +174,6 @@ a:visited.lego-brick {
 
         .lego-brick-3x1 .stud {
             width: 24%; /* Diameter of the stud */
-            background-color: #e30613; /* Same color as the brick */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
         /* Positioning each stud */
@@ -195,16 +183,14 @@ a:visited.lego-brick {
 
         .lego-brick-2x1 .stud {
             width: 35%; /* Diameter of the stud */
-            background-color: #237841; /* Same color as the brick */
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D effect */
         }
 
         /* Positioning each stud */
         .lego-brick-2x1 .stud:nth-child(1) { left: 10%; }
         .lego-brick-2x1 .stud:nth-child(2) { left: 55%; }        
 
+
 .brick-collection .lego-brick {
-    position: absolute;
     color: white;
     font-family: degular, sans-serif;
     font-size: 48px;
@@ -215,116 +201,11 @@ a:visited.lego-brick {
 
 .brick-collection {
     position: relative;
-    width: 550px;
     margin: 0 auto;
     margin-top: 10px;
+    background-color:#961f1b;
 }
 
-.brick-collection .lego-brick-3x1:nth-child(1) {
-    left: 285px;
-    top: 300px; /* Row 4 */
-}
-.brick-collection .lego-brick-3x1:nth-child(2) {
-    left: 115px;
-
-    top: 300px; /* Row 4 */
-}
-.brick-collection .lego-brick-3x1:nth-child(3) {
-    left: 285px;
-    top: 450px; /* Row 6 */
-}
-.brick-collection .lego-brick-3x1:nth-child(4) {
-    left: 115px;
-    top: 450px; /* Row 6 */
-}
-
-.brick-collection .lego-brick-2x1:nth-child(5) {
-    /* Day 1 */
-    left: 0px;
-    top: 460px; /* Row 6a */
-}
-
-.brick-collection .lego-brick-2x1:nth-child(6) {
-    /* Day 3 */
-    left: 227px;
-    top: 525px; /* Row 7 */
-}
-.brick-collection .lego-brick-2x1:nth-child(7) {
-    left: 60px;
-    top: 160px; /* Row 2 */
-}
-.brick-collection .lego-brick-2x1:nth-child(8) {
-    left: 450px;
-    top: 385px; /* Row 5a */
-}
-.brick-collection .lego-brick-2x1:nth-child(9) {
-    left: 0px;
-    top: 310px; /* Row 4a */
-}
-.brick-collection .lego-brick-2x1:nth-child(10) {
-    left: 100px;
-    top: 550px; /* Row 6a */
-}
-.brick-collection .lego-brick-4x1 {
-    left: 180px;
-    top: 10px; /* Row 0 */
-}
-.brick-collection .lego-brick-2x1:nth-child(11) {
-    left: 450px;
-    top: 235px; /* Row 3 */
-}
-.brick-collection .lego-brick-2x1:nth-child(12) {
-    left: 340px;
-    top: 85px; /* Row 1 */
-}
-.brick-collection .lego-brick-2x1:nth-child(13) {
-    left: 115px;
-    top: 375px; /* Row 5 */
-}
-.brick-collection .lego-brick-2x1:nth-child(14) {
-    left: 450px;
-    top: 535px; /* Row 7a */
-}
-.brick-collection .lego-brick-2x1:nth-child(15) {
-    left: 115px;
-    top: 85px; /* Row 1 */
-}
-.brick-collection .lego-brick-2x1:nth-child(16) {
-    left: 0px;
-    top: 535px; /* Row 7a */
-}
-.brick-collection .lego-brick-2x1:nth-child(17) {
-    left: 450px;
-    top: 310px; /* Row 4a */
-}
-.brick-collection .lego-brick-2x1:nth-child(18) {
-    left: 450px;
-    top: 460px; /* Row 6a */
-}
-.brick-collection .lego-brick-2x1:nth-child(19) {
-    left: 390px;
-    top: 160px; /* Row 2 */
-}
-.brick-collection .lego-brick-2x1:nth-child(20) {
-    left: 0px;
-    top: 235px; /* Row 3 */
-}
-.brick-collection .lego-brick-2x1:nth-child(21) {
-    left: 340px;
-    top: 525px; /* Row 7 */
-}
-.brick-collection .lego-brick-2x1:nth-child(22) {
-    left: 340px;
-    top: 375px; /* Row 5 */
-}
-.brick-collection .lego-brick-2x1:nth-child(23) {
-    left: 0px;
-    top: 385px; /* Row 5a */
-}
-.brick-collection .lego-brick-2x1:nth-child(24) {
-    left: 115px;
-    top: 525px; /* Row 7 */
-}
 
 .sticker {
     width: 200px;
@@ -346,8 +227,8 @@ a:visited.lego-brick {
     filter: drop-shadow(5px 5px 10px #555B);
 }
 
-div#stable img {
-    width: 2000 px;
+.stable-bg {
+    width: 1000px;
 }
 
 .grow { transition: all .2s ease-in-out; }
