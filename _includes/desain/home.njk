@@ -1,16 +1,18 @@
 
-<div id="content" class="page-content">
-<img src="https://www.faithinkids.org/wp-content/uploads/2024/07/brick-by-brick-title.png" alt="" /> 
+<div id="content">
+<img class="img-fluid" src="https://www.faithinkids.org/wp-content/uploads/2024/07/brick-by-brick-title.png" alt="" /> 
 <h1>The Christmas Build Up</h1>
+
 	<div class="container entry-content">
-        <div class="brick-collection row">
-            {% for i in range(1,25) %}
-            <div class="col-3 py-2 my-2 text-center">
+        <h2 class="red-heading">24 simple, powerful and manageable moments for families to explore the Christmas story together through Advent.</h2> 
+        <div class="brick-collection row p-5">
+            {% for a in range(0,24) %}
+            {% set i= (a*5 % 24)+1 %}
+            <div class="col-6 col-sm-4 col-md-3 py-2 my-2 text-center">
                 <a href="/posts/day{{i}}" class="day grow transition-button lego-brick lego-brick-2x1" data-target="day{{i}}" data-stencil="#stencil-3x1" style="view-transition-name: day-{{i}}">
                     {{ i }}
                     <div class="stud"></div>
                     <div class="stud"></div>
-                    <div class="stud"></div>		    
                 </a>
             </div>
             {% endfor %}

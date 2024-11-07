@@ -25,13 +25,29 @@
 			</div>
 		</div>
 
-		<div class="collect-sticker entry-content container">
+		<div class="row text-white sticker-collection">
+			<div class="text-end col-6 col-md-4 offset-md-2">
+				<h3>Click to collect your digital sticker and build up your own nativity scene:</h2>
+			</div>
+			<div class="col-3">
+				<div class="sticker-arrow"></div>
+			</div>
+			<div class="col-3"> 
+				<div class="sticker-circle">
+					<a href="/stickerbook#{{post.day}}">
+						<img class="img-fluid" src="{{ post.nativity_figure }}">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		{# <div class="collect-sticker entry-content container">
 			<h2>Time to collect today's digital sticker!</h2>
 			<p>Click to collect your digital sticker and build up your own nativity scene:</p>
 			<div class="sticker-for-collection">
 				<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
 			</div>
-		</div>
+		</div> #}
 	</div>
 
 </div>

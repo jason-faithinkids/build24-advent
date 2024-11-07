@@ -140,25 +140,17 @@ a:visited.lego-brick {
         .lego-brick-2x1 {
             width: 105px; /* Width of the brick */
             height: 60px; /* Height of the brick */
-            border: 2px dashed #FFF;
+            border: 2px solid #FFF;
             border-spacing: 5px;
         }
 
-        /* Studs on the LEGO brick */
-        .stud {
-            width: 20%; /* Diameter of the stud */
-            height: 10px;
-            border-radius: 2px; /* Make it circular */
-            position: absolute; /* Position it relative to the brick */
-            top: -8px; /* Position to appear above the brick */
-        }
 
         .stud {            
             height: 10px;
             border-radius: 2px; /* Make it circular */
             position: absolute; /* Position it relative to the brick */
-            top: -8px; /* Position to appear above the brick */
-            border: 2px dashed #FFF;
+            top: -10px; /* Position to appear above the brick */
+            border: 2px solid #FFF;
             border-bottom: none;
         }
 
@@ -233,3 +225,40 @@ a:visited.lego-brick {
 
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
+
+.red-heading {
+    color: darkred;
+}
+
+.sticker-collection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sticker-arrow {
+    position: relative;
+    background-color: white;
+    width: 60%;
+    height: 8vw;
+}
+
+.sticker-arrow::after {
+    content: '';
+    display: flex;
+    position: absolute;
+    align-self: center;
+    left: 98%;
+    top: -25%;
+    width: 0;
+    height: 0;
+    border: 6vw solid transparent;
+    border-left: 4vw solid white;
+    z-index: 2;
+}
+
+.sticker-circle {
+    position: relative;
+    padding-bottom: 20%;
+    background-color: white;
+    border-radius: 50%;
+}
