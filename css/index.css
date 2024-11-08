@@ -4,7 +4,6 @@
 
 body {
     background: url(/img/2024-brick-background2.jpg) repeat;
-    background-size: 50%;
 
     --e-global-color-primary: #009CEE;
     --e-global-color-secondary: #FFB400;
@@ -26,7 +25,7 @@ body {
     --e-global-typography-accent-font-family: "degular";
     --e-global-typography-accent-font-weight: 500;
     font-family: "degular", Sans-serif;
-    font-size: 20px;
+    font-size: 23px;
     line-height: 1.6em;
 }
 
@@ -43,8 +42,6 @@ h2 {
 }
 
 #content {
-  margin-top: 20px;
-  margin-left: 20px;
   text-align: center;  
   color: white;
 }
@@ -117,6 +114,20 @@ div#zoom {
 
 .lego-brick {
     display: inline-block;
+}
+
+.lego-brick-used, 
+.lego-brick-used .stud {
+    border-color: darkred !important;
+    color: darkred!important;
+}
+
+.lego-brick-inactive, 
+.lego-brick-inactive .stud {
+    border-color: gray !important;
+    color: gray!important;
+    pointer-events: none;
+    cursor: default;
 }
 
 a:link.lego-brick,
@@ -226,6 +237,7 @@ a:visited.lego-brick {
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
 
+
 .red-heading {
     color: darkred;
 }
@@ -238,8 +250,9 @@ a:visited.lego-brick {
 .sticker-arrow {
     position: relative;
     background-color: white;
-    width: 60%;
-    height: 8vw;
+    width: 50%;
+    left:20%;
+    height: 5vw;
 }
 
 .sticker-arrow::after {
@@ -251,14 +264,14 @@ a:visited.lego-brick {
     top: -25%;
     width: 0;
     height: 0;
-    border: 6vw solid transparent;
+    border: 4vw solid transparent;
     border-left: 4vw solid white;
     z-index: 2;
 }
 
 .sticker-circle {
     position: relative;
-    padding-bottom: 20%;
+    padding: 10%;
     background-color: white;
     border-radius: 50%;
 }

@@ -3,6 +3,12 @@ layout: layouts/stickerbook.njk
 permalink: /stickerbook/frame.html
 ---
 
+<style>
+    body { 
+        background: none
+    }
+</style>
+
 <div id="stickers" class="row">
   {% for sticker in post %}
     <div class="sticker" id="sticker-{{sticker.day}}">
@@ -12,5 +18,5 @@ permalink: /stickerbook/frame.html
 </div>
 
 <div id="stable">
-  <img src="/img/stickers/stable_front.png" class="stable-bg" draggable="false">
+  <img src="/.netlify/images?url=img/stickers/stable_front.png" class="stable-bg" draggable="false">
 </div>

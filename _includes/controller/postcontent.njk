@@ -5,23 +5,18 @@
 	</div>
 
 	<div class="container content-center">
+		<div class="row entry-content container text-center">
 		{% if post.video %}
-			<div class="row entry-content container">
 				<video controls width="100%" autoplay>
 					<source src="{{post.video}}" type="video/mp4" />
 				</video>
-			</div>
 		{% endif %}
 
-		<div class="row entry-content container">
-			<div class="col-sm-8">
+			<div class="p-4">
 				{{ post.body | nl2br | safe }}
 				{% if post.podcast %}
 					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>
 				{% endif %}
-			</div>
-			<div class="col-sm-4">
-				<img width="100%" src="{{post.picture}}"/>
 			</div>
 		</div>
 
@@ -32,7 +27,7 @@
 			<div class="col-3">
 				<div class="sticker-arrow"></div>
 			</div>
-			<div class="col-3"> 
+			<div class="col-3 p-4"> 
 				<div class="sticker-circle">
 					<a href="/stickerbook#{{post.day}}">
 						<img class="img-fluid" src="{{ post.nativity_figure }}">

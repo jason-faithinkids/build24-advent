@@ -1,5 +1,10 @@
 {% include "layouts/widget/head.njk" %}
 
+
+<div id="content" class="container pt-5" >
+<h1>{{ post.heading if post.heading else heading }}</h1>
 {% include "layouts/widget/content.njk" %}
+</div>
+
 
 {% include "layouts/widget/footer.njk" %}

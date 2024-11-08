@@ -23,7 +23,8 @@ async function wpPosts() {
           picture: p.picture,
           nativity_figure: p.nativity_figure,
           day: p.day,
-          colour: p.colour ||'red'
+          colour: p.colour ||'red',
+          heading: `Advent Day ${p.day}` 
         };
 
         return day;
