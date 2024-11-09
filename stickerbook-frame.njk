@@ -1,13 +1,9 @@
 ---
-layout: layouts/stickerbook.njk
 permalink: /stickerbook/frame.html
 ---
 
-<style>
-    body { 
-        background: none
-    }
-</style>
+{% include "layouts/widget/head.njk" %}
+<style>body { background: none; }</style>
 
 <div id="stickers" class="row">
   {% for sticker in post %}
@@ -18,5 +14,19 @@ permalink: /stickerbook/frame.html
 </div>
 
 <div id="stable">
-  <img src="/.netlify/images?url=img/stickers/stable_front.png" class="stable-bg" draggable="false">
+  <img src="/img/stickers/stable_front.png" class="stable-bg" draggable="false">
 </div>
+
+<script>
+// self executing function here
+$(document).ready(function() {
+    initialiseStickerbook();
+});
+</script>
+
+<audio class="sfx" id="take-sticker1" src="/sfx/take_sticker1.wav"></audio>
+<audio class="sfx" id="take-sticker2" src="/sfx/take_sticker2.wav"></audio>
+<audio class="sfx" id="drop-sticker" src="/sfx/drop_sticker.wav"></audio>
+
+
+{% include "layouts/widget/footer.njk" %}

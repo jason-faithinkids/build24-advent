@@ -53,19 +53,14 @@ z-index: 1;
 text-align: center;
 }
 
-.entry-header-block {  
-  padding: 50px;
+.header {  
+  display: flex;
+  align-items: center;
+  background-color: #8e181b;
+  padding:20px;
 }
 
-.entry-header-red {
-  background-color: #e30613;
-}
-
-.entry-header-green {
-  background-color: #237841;
-}
-
-.entry-header-block h1 {
+.header h1 {
   color: white;
 }
 
@@ -206,7 +201,7 @@ a:visited.lego-brick {
     position: relative;
     margin: 0 auto;
     margin-top: 10px;
-    background-color:#961f1b;
+    background-color:#C53536;
 }
 
 

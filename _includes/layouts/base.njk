@@ -1,9 +1,22 @@
 {% include "layouts/widget/head.njk" %}
 
+<div class="header text-center row">
+  <div class=".d-none .d-sm-block col-sm-3">
+    <a href="/" class='grow '>
+      <img class="img-fluid" src="/img/stickers/brick-by-brick-title.webp">
+    </a>
+    {# <a href="https://faithinkids.org" class='.d-block .d-sm-none'>
+      <img class="img-fluid" src="/img/FIK-icon-white.png">
+    </a> #}
+  </div>
+  <h1 class = "col-4 col-sm-6">{{ post.heading if post.heading else heading }}</h1>
+  <a href="https://faithinkids.org" class='grow col-sm-3 .d-none .d-sm-block'>
+    <img class="img-fluid" src="/img/FIK-icon-white.png">
+  </a>
+</div>
 
 <div id="content" class="container pt-5" >
-<h1>{{ post.heading if post.heading else heading }}</h1>
-{% include "layouts/widget/content.njk" %}
+  {% include "layouts/widget/content.njk" %}
 </div>
 
 
