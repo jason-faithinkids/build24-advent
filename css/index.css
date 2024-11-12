@@ -270,3 +270,7 @@ a:visited.lego-brick {
     background-color: white;
     border-radius: 50%;
 }
+
+.nativity-container {
+    overflow: hidden;
+}
