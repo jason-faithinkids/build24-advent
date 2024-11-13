@@ -99,8 +99,8 @@ function cpt_render_meta_box($post) {
     <input type="text" id="cpt_picture" name="cpt_picture" value="<?php echo esc_attr($picture); ?>" /><br>
     <input type="button" id="cpt_picture_button" class="button" value="<?php _e('Upload Image', 'text_domain'); ?>" /><br>
 
-    <label for="cpt_colouring"><?php _e('Picture', 'text_domain'); ?></label>
-    <input type="text" id="cpt_colouring" name="cpt_colouring" value="<?php echo esc_attr($picture); ?>" /><br>
+    <label for="cpt_colouring"><?php _e('Colouring', 'text_domain'); ?></label>
+    <input type="text" id="cpt_colouring" name="cpt_colouring" value="<?php echo esc_attr($colouring); ?>" /><br>
     <input type="button" id="cpt_colouring_button" class="button" value="<?php _e('Upload Colouring', 'text_domain'); ?>" /><br>
 
     <label for="cpt_nativity_figure"><?php _e('Nativity Figure', 'text_domain'); ?></label>
@@ -145,7 +145,7 @@ function cpt_render_meta_box($post) {
 
         uploadImage('#cpt_picture_button', '#cpt_picture');
         uploadImage('#cpt_nativity_figure_button', '#cpt_nativity_figure');
-        uploadImage('#cpt_colouring_button', '#cpt_colouring_figure');
+        uploadImage('#cpt_colouring_button', '#cpt_colouring');
     });
     </script>
     <?php
