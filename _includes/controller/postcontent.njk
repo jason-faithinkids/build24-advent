@@ -2,13 +2,22 @@
 
 	<div class="container content-center">
 		<div class="row entry-content container text-center">
-		{% if post.video %}
+		{% if post.youtubeid %}
+				<div class="video-container" >
+					<iframe class="advent-video" width="100%" height="auto" src="https://www.youtube.com/embed/{{post.youtubeid}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+		{% elif post.video %}
 				<video controls width="100%" autoplay>
 					<source src="{{post.video}}" type="video/mp4" />
 				</video>
+		{% else %}
+			<img class="img-fluid" src="{{post.picture}}"></img>
 		{% endif %}
-
 			<div class="p-4">
+				<div class="scripture">
+					 <p class="scripture-text">{{post.scripture}}</p>
+					 <p class="scripture-ref text-boldics">{{post.scriptureRef}}</p> 
+				</div>
 				{{ post.body | nl2br | safe }}
 				{% if post.podcast %}
 					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>
@@ -31,14 +40,6 @@
 				</div>
 			</div>
 		</div>
-
-		{# <div class="collect-sticker entry-content container">
-			<h2>Time to collect today's digital sticker!</h2>
-			<p>Click to collect your digital sticker and build up your own nativity scene:</p>
-			<div class="sticker-for-collection">
-				<a href="/stickerbook#{{post.day}}"><img src="{{ post.nativity_figure }}" class="grow"></a>
-			</div>
-		</div> #}
 	</div>
 
 </div>
