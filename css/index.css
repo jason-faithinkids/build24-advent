@@ -134,22 +134,13 @@ a:visited.lego-brick {
 
 /* Container for the LEGO brick */
         .lego-brick {
+            width: 106px;
             border-radius: 5px; /* Slight rounding for a more realistic shape */
             position: relative; /* To position the studs */
-            
-        }
-        .lego-brick-3x1 {
-            width: 158px; /* Width of the brick */
-            height: 60px; /* Height of the brick */
-            border: 2px dashed #FFF;
-        }
-        .lego-brick-2x1 {
-            width: 105px; /* Width of the brick */
             height: 60px; /* Height of the brick */
             border: 2px solid #FFF;
             border-spacing: 5px;
         }
-
 
         .stud {            
             height: 10px;
@@ -273,4 +264,18 @@ a:visited.lego-brick {
 
 .nativity-container {
     overflow: hidden;
+}
+
+.video-container {
+    position:relative;
+    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+}
+
+.advent-video {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%; 
+    height: 100%;
 }
