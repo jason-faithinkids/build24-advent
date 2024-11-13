@@ -17,13 +17,13 @@ async function wpPosts() {
         const day =  {
           id: p.id,
           body: p.body,
-          podcast: p.podcast.endsWith('mp4') ? '' : p.podcast,
-          video: p.podcast.endsWith('mp4') ? p.podcast : '',
+          podcast: p.podcast,
+          video: p.video,
+          youtubeId: extractYouTubeId(p.video),
           thumbnail: p.thumbnail,
           picture: p.picture,
           nativity_figure: p.nativity_figure,
           day: p.day,
-          colour: p.colour ||'red',
           heading: `Advent Day ${p.day}` 
         };
 
@@ -37,10 +37,18 @@ async function wpPosts() {
   }
 }
 
-const randomColour = () => Math.floor(Math.random()*16777215).toString(16);
+function extractYouTubeId(url) {
+  // Regular expression to match YouTube video URLs in various formats
+  const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=)|youtu\.be\/)([^#&?]*)/;
 
-const podcastIsMp4 = (url) => url.endsWith('mp4')
+  const match = url.match(youtubeRegex);
 
+  if (match && match[1]) {
+    return match[1];
+  } else {
+    return null; // Or handle the case where no ID is found
+  }
+}
 
 // process WordPress posts
 module.exports = async function() {

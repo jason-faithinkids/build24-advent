@@ -62,6 +62,7 @@ function cpt_render_meta_box($post) {
     $body = get_post_meta($post->ID, '_cpt_body', true);
     $scripture = get_post_meta($post->ID, '_cpt_scripture', true);
     $scripture_ref = get_post_meta($post->ID, '_cpt_scripture_ref', true);
+    $heading = get_post_meta($post->ID, '_cpt_heading', true);
     $podcast = get_post_meta($post->ID, '_cpt_podcast', true);
     $video = get_post_meta($post->ID, '_cpt_video', true);
     $picture = get_post_meta($post->ID, '_cpt_picture', true);
@@ -83,6 +84,9 @@ function cpt_render_meta_box($post) {
 
     <label for="cpt_scripture_ref"><?php _e('Scripture reference', 'text_domain'); ?></label>
     <input type="text" id="cpt_scripture_ref" name="cpt_scripture_ref" value="<?php echo esc_attr($scripture); ?>" /><br>
+
+    <label for="cpt_heading"><?php _e('Heading', 'text_domain'); ?></label>
+    <input type="text" id="cpt_heading" name="cpt_heading" value="<?php echo esc_attr($scripture); ?>" /><br>
 
     <label for="cpt_podcast"><?php _e('Podcast (URL)', 'text_domain'); ?></label>
     <input type="url" id="cpt_podcast" name="cpt_podcast" value="<?php echo esc_attr($podcast); ?>" /><br>
@@ -173,6 +177,10 @@ function cpt_save_meta_box_data($post_id) {
         update_post_meta($post_id, '_cpt_scripture_ref', sanitize_textarea_field($_POST['cpt_scripture_ref']));
     }
 
+    if (isset($_POST['cpt_heading'])) {
+        update_post_meta($post_id, '_cpt_heading', sanitize_textarea_field($_POST['cpt_heading']));
+    }
+
     if (isset($_POST['cpt_podcast'])) {
         update_post_meta($post_id, '_cpt_podcast', esc_url($_POST['cpt_podcast']));
     }
@@ -211,6 +219,11 @@ function cpt_register_meta() {
         'show_in_rest' => true,
     ));
     register_meta('post', '_cpt_scripture_ref', array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+    ));
+    register_meta('post', '_cpt_heading', array(
         'type' => 'string',
         'single' => true,
         'show_in_rest' => true,
@@ -255,8 +268,8 @@ function cpt_get_scripture_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_scripture', true);
 }
 
-function cpt_get_scripture_ref_meta($object, $meta_key, $meta_value) {
-    return get_post_meta($object['id'], '_cpt_scripture_ref', true);
+function cpt_get_heading_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_heading', true);
 }
 
 function cpt_get_podcast_meta($object, $meta_key, $meta_value) {
@@ -302,6 +315,14 @@ function cpt_register_rest_fields() {
         'schema' => array(
             'type' => 'string',
             'description' => 'Scripture for the day',
+        ),
+    ));
+
+    register_rest_field('nativity', 'heading', array(
+        'get_callback' => 'cpt_get_heading_meta',
+        'schema' => array(
+            'type' => 'string',
+            'description' => 'heading for the day',
         ),
     ));
 
