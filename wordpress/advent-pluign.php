@@ -268,6 +268,10 @@ function cpt_get_scripture_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_scripture', true);
 }
 
+function cpt_get_scripture_ref_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_scripture_ref', true);
+}
+
 function cpt_get_heading_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_heading', true);
 }
