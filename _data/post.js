@@ -19,7 +19,7 @@ async function wpPosts() {
           body: p.body,
           podcast: p.podcast,
           video: p.video,
-          youtubeId: extractYouTubeId(p.video),
+          youtubeId: p.video ? extractYouTubeId(p.video) : undefined,
           thumbnail: p.thumbnail,
           picture: p.picture,
           nativity_figure: p.nativity_figure,
