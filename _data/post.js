@@ -38,7 +38,7 @@ async function wpPosts() {
 }
 
 function extractPodcastSlug(url){
-  const regex = /(\d+)(?:\-(\d+))?/;
+  const regex = /(\d+)\/episodes\/(.+)?/;
 
   const matches = url.match(regex);
 
