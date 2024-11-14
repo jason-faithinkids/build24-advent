@@ -502,3 +502,17 @@ h3 {
       font-weight: bold;
       margin: 0;
     }
+
+.video-container {
+    position:relative;
+    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+}
+
+.advent-video {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%; 
+    height: 100%;
+}

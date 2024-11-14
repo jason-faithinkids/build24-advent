@@ -59,14 +59,16 @@ function cpt_render_meta_box($post) {
     wp_nonce_field('cpt_save_meta_box_data', 'cpt_meta_box_nonce');
 
     $day = get_post_meta($post->ID, '_cpt_day', true);
-    $colour = get_post_meta($post->ID, '_cpt_colour', true);
     $body = get_post_meta($post->ID, '_cpt_body', true);
+    $scripture = get_post_meta($post->ID, '_cpt_scripture', true);
+    $scripture_ref = get_post_meta($post->ID, '_cpt_scripture_ref', true);
+    $heading = get_post_meta($post->ID, '_cpt_heading', true);
     $podcast = get_post_meta($post->ID, '_cpt_podcast', true);
-    $video_start = get_post_meta($post->ID, '_cpt_video_start', true);
-    $video_end = get_post_meta($post->ID, '_cpt_video_end', true);
-    $thumbnail = get_post_meta($post->ID, '_cpt_thumbnail', true);
+    $video = get_post_meta($post->ID, '_cpt_video', true);
     $picture = get_post_meta($post->ID, '_cpt_picture', true);
+    $colouring = get_post_meta($post->ID, '_cpt_colouring', true);
     $nativity_figure = get_post_meta($post->ID, '_cpt_nativity_figure', true);
+
 
     ?>
     <label for="cpt_day"><?php _e('Day (integer)', 'text_domain'); ?></label>
@@ -77,26 +79,29 @@ function cpt_render_meta_box($post) {
     wp_editor($body, 'cpt_body', array('textarea_name' => 'cpt_body'));
     ?><br>
 
+    <label for="cpt_scripture"><?php _e('Scripture text', 'text_domain'); ?></label>
+    <input type="text" id="cpt_scripture" name="cpt_scripture" value="<?php echo esc_attr($scripture); ?>" /><br>
+
+    <label for="cpt_scripture_ref"><?php _e('Scripture reference', 'text_domain'); ?></label>
+    <input type="text" id="cpt_scripture_ref" name="cpt_scripture_ref" value="<?php echo esc_attr($scripture); ?>" /><br>
+
+    <label for="cpt_heading"><?php _e('Heading', 'text_domain'); ?></label>
+    <input type="text" id="cpt_heading" name="cpt_heading" value="<?php echo esc_attr($scripture); ?>" /><br>
+
     <label for="cpt_podcast"><?php _e('Podcast (URL)', 'text_domain'); ?></label>
     <input type="url" id="cpt_podcast" name="cpt_podcast" value="<?php echo esc_attr($podcast); ?>" /><br>
 
+    <label for="cpt_video"><?php _e('Video (URL)', 'text_domain'); ?></label>
+    <input type="url" id="cpt_video" name="cpt_video" value="<?php echo esc_attr($video); ?>" /><br>
 
-    <label for="cpt_colour"><?php _e('colour', 'text_domain'); ?></label>
-    <input type="url" id="cpt_colour" name="cpt_colour" value="<?php echo esc_attr($podcast); ?>" /><br>
-
-    <label for="cpt_video_start"><?php _e('Video Start (timecode)', 'text_domain'); ?></label>
-    <input type="text" id="cpt_video_start" name="cpt_video_start" value="<?php echo esc_attr($video_start); ?>" /><br>
-
-    <label for="cpt_video_end"><?php _e('Video End (timecode)', 'text_domain'); ?></label>
-    <input type="text" id="cpt_video_end" name="cpt_video_end" value="<?php echo esc_attr($video_end); ?>" /><br>
-
-    <label for="cpt_thumbnail"><?php _e('Thumbnail', 'text_domain'); ?></label>
-    <input type="text" id="cpt_thumbnail" name="cpt_thumbnail" value="<?php echo esc_attr($thumbnail); ?>" /><br>
-    <input type="button" id="cpt_thumbnail_button" class="button" value="<?php _e('Upload Image', 'text_domain'); ?>" /><br>
 
     <label for="cpt_picture"><?php _e('Picture', 'text_domain'); ?></label>
     <input type="text" id="cpt_picture" name="cpt_picture" value="<?php echo esc_attr($picture); ?>" /><br>
     <input type="button" id="cpt_picture_button" class="button" value="<?php _e('Upload Image', 'text_domain'); ?>" /><br>
+
+    <label for="cpt_colouring"><?php _e('Colouring', 'text_domain'); ?></label>
+    <input type="text" id="cpt_colouring" name="cpt_colouring" value="<?php echo esc_attr($colouring); ?>" /><br>
+    <input type="button" id="cpt_colouring_button" class="button" value="<?php _e('Upload Colouring', 'text_domain'); ?>" /><br>
 
     <label for="cpt_nativity_figure"><?php _e('Nativity Figure', 'text_domain'); ?></label>
     <input type="text" id="cpt_nativity_figure" name="cpt_nativity_figure" value="<?php echo esc_attr($nativity_figure); ?>" /><br>
@@ -138,9 +143,9 @@ function cpt_render_meta_box($post) {
             });
         }
 
-        uploadImage('#cpt_thumbnail_button', '#cpt_thumbnail');
         uploadImage('#cpt_picture_button', '#cpt_picture');
         uploadImage('#cpt_nativity_figure_button', '#cpt_nativity_figure');
+        uploadImage('#cpt_colouring_button', '#cpt_colouring');
     });
     </script>
     <?php
@@ -164,24 +169,32 @@ function cpt_save_meta_box_data($post_id) {
         update_post_meta($post_id, '_cpt_body', sanitize_textarea_field($_POST['cpt_body']));
     }
 
+    if (isset($_POST['cpt_scripture'])) {
+        update_post_meta($post_id, '_cpt_scripture', sanitize_textarea_field($_POST['cpt_scripture']));
+    }
+
+    if (isset($_POST['cpt_scripture_ref'])) {
+        update_post_meta($post_id, '_cpt_scripture_ref', sanitize_textarea_field($_POST['cpt_scripture_ref']));
+    }
+
+    if (isset($_POST['cpt_heading'])) {
+        update_post_meta($post_id, '_cpt_heading', sanitize_textarea_field($_POST['cpt_heading']));
+    }
+
     if (isset($_POST['cpt_podcast'])) {
         update_post_meta($post_id, '_cpt_podcast', esc_url($_POST['cpt_podcast']));
     }
 
-    if (isset($_POST['cpt_video_start'])) {
-        update_post_meta($post_id, '_cpt_video_start', sanitize_text_field($_POST['cpt_video_start']));
-    }
-
-    if (isset($_POST['cpt_video_end'])) {
-        update_post_meta($post_id, '_cpt_video_end', sanitize_text_field($_POST['cpt_video_end']));
-    }
-
-    if (isset($_POST['cpt_thumbnail'])) {
-        update_post_meta($post_id, '_cpt_thumbnail', esc_url($_POST['cpt_thumbnail']));
+    if (isset($_POST['cpt_video'])) {
+        update_post_meta($post_id, '_cpt_video', esc_url($_POST['cpt_video']));
     }
 
     if (isset($_POST['cpt_picture'])) {
         update_post_meta($post_id, '_cpt_picture', esc_url($_POST['cpt_picture']));
+    }
+
+    if (isset($_POST['cpt_colouring'])) {
+        update_post_meta($post_id, '_cpt_colouring', esc_url($_POST['cpt_colouring']));
     }
 
     if (isset($_POST['cpt_nativity_figure'])) {
@@ -200,27 +213,37 @@ function cpt_register_meta() {
         'single' => true,
         'show_in_rest' => true,
     ));
+    register_meta('post', '_cpt_scripture', array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+    ));
+    register_meta('post', '_cpt_scripture_ref', array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+    ));
+    register_meta('post', '_cpt_heading', array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+    ));
     register_meta('post', '_cpt_podcast', array(
         'type' => 'string',
         'single' => true,
         'show_in_rest' => true,
     ));
-    register_meta('post', '_cpt_video_start', array(
-        'type' => 'string',
-        'single' => true,
-        'show_in_rest' => true,
-    ));
-    register_meta('post', '_cpt_video_end', array(
-        'type' => 'string',
-        'single' => true,
-        'show_in_rest' => true,
-    ));
-    register_meta('post', '_cpt_thumbnail', array(
+    register_meta('post', '_cpt_video', array(
         'type' => 'string',
         'single' => true,
         'show_in_rest' => true,
     ));
     register_meta('post', '_cpt_picture', array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+    ));
+    register_meta('post', '_cpt_colouring', array(
         'type' => 'string',
         'single' => true,
         'show_in_rest' => true,
@@ -241,28 +264,32 @@ function cpt_get_body_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_body', true);
 }
 
-function cpt_get_colour_meta($object, $meta_key, $meta_value) {
-    return get_post_meta($object['id'], 'cpt_colour', true);
+function cpt_get_scripture_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_scripture', true);
+}
+
+function cpt_get_scripture_ref_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_scripture_ref', true);
+}
+
+function cpt_get_heading_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_heading', true);
 }
 
 function cpt_get_podcast_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_podcast', true);
 }
 
-function cpt_get_video_start_meta($object, $meta_key, $meta_value) {
-    return get_post_meta($object['id'], '_cpt_video_start', true);
-}
-
-function cpt_get_video_end_meta($object, $meta_key, $meta_value) {
-    return get_post_meta($object['id'], '_cpt_video_end', true);
-}
-
-function cpt_get_thumbnail_meta($object, $meta_key, $meta_value) {
-    return get_post_meta($object['id'], '_cpt_thumbnail', true);
+function cpt_get_video_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_video', true);
 }
 
 function cpt_get_picture_meta($object, $meta_key, $meta_value) {
     return get_post_meta($object['id'], '_cpt_picture', true);
+}
+
+function cpt_get_colouring_meta($object, $meta_key, $meta_value) {
+    return get_post_meta($object['id'], '_cpt_colouring', true);
 }
 
 function cpt_get_nativity_figure_meta($object, $meta_key, $meta_value) {
@@ -279,19 +306,27 @@ function cpt_register_rest_fields() {
         ),
     ));
 
-    register_rest_field('nativity', 'colour', array(
-        'get_callback' => 'cpt_get_colour_meta',
+    register_rest_field('nativity', 'scripture', array(
+        'get_callback' => 'cpt_get_body_meta',
         'schema' => array(
             'type' => 'string',
-            'description' => 'The body of the nativity.',
+            'description' => 'Scripture for the day',
         ),
     ));
 
-    register_rest_field('nativity', 'video_start', array(
-        'get_callback' => 'cpt_get_video_start_meta',
+    register_rest_field('nativity', 'scripture_ref', array(
+        'get_callback' => 'cpt_get_scripture_ref_meta',
         'schema' => array(
             'type' => 'string',
-            'description' => 'The start time of the video associated with the nativity.',
+            'description' => 'Scripture for the day',
+        ),
+    ));
+
+    register_rest_field('nativity', 'heading', array(
+        'get_callback' => 'cpt_get_heading_meta',
+        'schema' => array(
+            'type' => 'string',
+            'description' => 'heading for the day',
         ),
     ));
 
@@ -303,21 +338,11 @@ function cpt_register_rest_fields() {
         ),
     ));
 
-
-
-    register_rest_field('nativity', 'video_end', array(
-        'get_callback' => 'cpt_get_video_end_meta',
+    register_rest_field('nativity', 'video', array(
+        'get_callback' => 'cpt_get_video_meta',
         'schema' => array(
             'type' => 'string',
-            'description' => 'The end time of the video associated with the nativity.',
-        ),
-    ));
-
-    register_rest_field('nativity', 'thumbnail', array(
-        'get_callback' => 'cpt_get_thumbnail_meta',
-        'schema' => array(
-            'type' => 'string',
-            'description' => 'The URL of the thumbnail image for the nativity.',
+            'description' => 'The video URL associated with the nativity.',
         ),
     ));
 
@@ -329,6 +354,13 @@ function cpt_register_rest_fields() {
         ),
     ));
 
+    register_rest_field('nativity', 'colouring', array(
+        'get_callback' => 'cpt_get_colouring_meta',
+        'schema' => array(
+            'type' => 'string',
+            'description' => 'The URL of the colouring sheet.',
+        ),
+    ));
     register_rest_field('nativity', 'nativity_figure', array(
         'get_callback' => 'cpt_get_nativity_figure_meta',
         'schema' => array(
@@ -352,4 +384,3 @@ add_action('add_meta_boxes', 'cpt_add_custom_meta_boxes');
 add_action('rest_api_init', 'cpt_register_meta');
 add_action('rest_api_init', 'cpt_register_rest_fields');
 add_action('save_post', 'cpt_save_meta_box_data');
-
