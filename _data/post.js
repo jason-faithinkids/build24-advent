@@ -17,7 +17,7 @@ async function wpPosts() {
         const day =  {
           id: p.id,
           body: p.body,
-          podcast: p.podcast,
+          podcast: extractPodcastSlug(p.podcast),
           video: p.video,
           youtubeId: p.video ? extractYouTubeId(p.video) : undefined,
           thumbnail: p.thumbnail,
@@ -34,6 +34,20 @@ async function wpPosts() {
   catch (err) {
     console.log(`WordPress API call failed: ${err}`);
     return null;
+  }
+}
+
+function extractPodcastSlug(url){
+  const regex = /(\d+)(?:\-(\d+))?/;
+
+  const matches = url.match(regex);
+
+  if (matches) {
+    const showId = matches[1];
+    const episodeId = matches[2] || ""; // Empty string if no episode ID
+    return `${showId}/${episodeId}`;
+  } else {
+    return ""; 
   }
 }
 
