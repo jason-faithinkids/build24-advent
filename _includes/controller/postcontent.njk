@@ -1,14 +1,26 @@
 <div style="view-transition-name: day-{{post.day}}">
 
 	<div class="container content-center">
-		<div class="row entry-content container text-center">
+		<div class="row entry-content container">
 		{% if post.video %}
 				<video controls width="100%" autoplay>
 					<source src="{{post.video}}" type="video/mp4" />
 				</video>
 		{% endif %}
 
-			<div class="p-4">
+			<div class="scripture-container">
+				<img src="../../img/bible.svg" alt="Icon" class="svg-icon">
+				<div>
+					<p class="scripture"> 
+						{{ post.scripture | nl2br | safe }}
+					</p>
+					<p class="reference">
+						{{ post.scripture_ref | nl2br | safe }}
+					</p>
+				</div>
+			</div>
+
+			<div class="p-4 body-text">
 				{{ post.body | nl2br | safe }}
 				{% if post.podcast %}
 					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>
