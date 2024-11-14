@@ -1,21 +1,39 @@
+
 {% include "layouts/widget/head.njk" %}
 
-<div class="header text-center row">
-  <div class="d-none d-sm-block col-sm-3 grow">
-    <a href="/" >
-      <img class="img-fluid" src="/img/stickers/brick-by-brick-title.webp">
+<div class="header d-flex align-items-center justify-content-between" style="background-color: darkred;">
+  <!-- Left: Home Icon (Desktop Only) -->
+
+  <div class="d-none d-md-flex align-items-center">
+    <a href="/">
+      <img class="img-fluid logo" src="/img/logo.png" alt="Main Logo">
     </a>
-    {# <a href="https://faithinkids.org" class='.d-block .d-sm-none'>
-      <img class="img-fluid" src="/img/FIK-icon-white.png">
-    </a> #}
   </div>
-  <h1 class = "col-9 col-sm-6">{{ post.heading if post.heading else heading }}</h1>
-  <a href="https://faithinkids.org" class='grow col-3'>
-    <img class="img-fluid" src="/img/FIK-icon-white.png">
-  </a>
+
+  <!-- Mobile Logo -->
+    <a href="/" class="d-md-none">
+      <img class="img-fluid logo-mobile" src="/img/logo-crop.png" alt="Mobile Logo">
+    </a>
+
+  <!-- Right: Navigation Links -->
+  <div class="d-flex align-items-center">
+    <!-- My Sticker Book -->
+    <a href="/stickerbook" class="nav-link text-white me-3">My Sticker Book</a>
+
+    <!-- Faith in Kids Button (Desktop) -->
+    <a href="https://faithinkids.org" target="_blank" class="btn btn-faithinkids d-none d-md-flex align-items-center">
+      <img src="/img/fik-logo.webp" alt="Faith in Kids Logo" class="me-2" style="height: 24px;">      <i class="fas fa-external-link-alt ms-2"></i>
+    </a>
+
+    <!-- Faith in Kids Image Icon (Mobile) -->
+    <a href="https://faithinkids.org" target="_blank" class="d-md-none">
+      <img src="/img/fik-icon-white.png" alt="Faith in Kids Mobile Icon" class="mobile-faith-icon">
+    </a>
+  </div>
 </div>
 
-<div id="content" class="container pt-5" >
+
+<div id="content" class="container" >
   {% include "layouts/widget/content.njk" %}
 </div>
 

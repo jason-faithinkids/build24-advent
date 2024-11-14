@@ -1,17 +1,23 @@
-	<div class="container entry-content">
-        <h2 class="red-heading">24 simple, powerful and manageable moments for families to explore the Christmas story together through Advent.</h2> 
-        <div class="brick-collection row p-5">
-            {% for a in range(0,24) %}
-            {% set i= (a*5 % 24)+1 %}
-            <div class="col-6 col-sm-4 col-md-3 py-2 my-2 text-center">
-                <a disabled href="/posts/day{{i}}" class="day grow transition-button lego-brick lego-brick-2x1" id="day-{{i}}" data-target="day{{i}}" data-stencil="#stencil-3x1" style="view-transition-name: day-{{i}}">
-                    {{ i }}
-                    <div class="stud"></div>
-                    <div class="stud"></div>
-                </a>
-            </div>
-            {% endfor %}
+<div class="fullscreen-bg"></div>
+<div class="brick-frame-overlay"></div>
 
+<div class="container entry-content-home">
+
+    <div class="home-heading">
+        <h2 class="red-heading">
+            24 simple, powerful and manageable moments for families to explore the Christmas story together through Advent.
+        </h2> 
+    </div>
+    <div class="brick-collection row p-5">
+        {% for a in range(0,24) %}
+        {% set i = (a * 5 % 24) + 1 %}
+        <div class="col-6 col-sm-4 col-lg-2 py-2 my-2 text-center">
+            <a disabled href="/posts/day{{ i }}" class="day grow transition-button lego-brick lego-brick-2x1" id="day-{{ i }}" data-target="day{{ i }}" data-stencil="#stencil-3x1" style="view-transition-name: day-{{ i }}">
+                {{ i }}
+                <div class="stud"></div>
+                <div class="stud"></div>
+            </a>
         </div>
+        {% endfor %}
     </div>
 </div>
