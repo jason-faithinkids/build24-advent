@@ -13,6 +13,14 @@
 			<img class="img-fluid" src="{{post.picture}}"></img>
 		{% endif %}
 
+		{% if post.podcast %}
+			<div class="p-4">
+				<audio controls>
+					<source src='https://www.buzzsprout.com/{{post.podcast}}.mp3'>
+				</audio>
+			</div>
+		{% endif %}
+
 			<div class="scripture-container">
 				<img src="../../img/bible.svg" alt="Icon" class="svg-icon">
 				<div>
@@ -28,9 +36,6 @@
 			<div class="p-4 body-text">
 
 				{{ post.body | nl2br | safe }}
-				{% if post.podcast %}
-					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>
-				{% endif %}
 			</div>
 		</div>
 
