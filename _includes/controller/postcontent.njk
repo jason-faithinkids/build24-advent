@@ -1,23 +1,32 @@
 <div style="view-transition-name: day-{{post.day}}">
 
 	<div class="container content-center">
+
 		<div class="row entry-content container text-center">
 		{% if post.youtubeId %}
 				<div class="video-container" >
 					<iframe class="advent-video" width="100%" height="auto" src="https://www.youtube.com/embed/{{post.youtubeId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 				</div>
 		{% elif post.video %}
-				<video controls width="100%" autoplay>
-					<source src="{{post.video}}" type="video/mp4" />
-				</video>
+
 		{% else %}
 			<img class="img-fluid" src="{{post.picture}}"></img>
 		{% endif %}
-			<div class="p-4">
-				<div class="scripture">
-					 <p class="scripture-text">{{post.scripture}}</p>
-					 <p class="scripture-ref text-boldics">{{post.scriptureRef}}</p> 
+
+			<div class="scripture-container">
+				<img src="../../img/bible.svg" alt="Icon" class="svg-icon">
+				<div>
+					<p class="scripture"> 
+						{{ post.scripture | nl2br | safe }}
+					</p>
+					<p class="reference">
+						{{ post.scripture_ref | nl2br | safe }}
+					</p>
 				</div>
+			</div>
+
+			<div class="p-4 body-text">
+
 				{{ post.body | nl2br | safe }}
 				{% if post.podcast %}
 					<a class="btn btn-success" href="{{post.podcast}}">Listen to the podcast.</a>

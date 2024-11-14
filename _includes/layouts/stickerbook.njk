@@ -2,6 +2,15 @@
 layout: layouts/base.njk
 templateClass: tmpl-home
 ---
-
-
 {{ content | safe }}
+
+<script>
+// self executing function here
+(function() {
+    initialiseStickerbook();
+})();
+</script>
+
+<audio class="sfx" id="take-sticker1" src="/sfx/take_sticker1.wav"></audio>
+<audio class="sfx" id="take-sticker2" src="/sfx/take_sticker2.wav"></audio>
+<audio class="sfx" id="drop-sticker" src="/sfx/drop_sticker.wav"></audio>

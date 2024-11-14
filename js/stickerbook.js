@@ -37,8 +37,6 @@ function initialiseStickerbook() {
         startTouch(this, e);
     });
     $('.sticker').on('touchstart', function(e) {    	
-        e.preventDefault();
-        e.stopPropagation();
         startTouch(this, e.touches[0]);
 
         if(!tapped){ //if tap is not set, set up single tap
@@ -98,4 +96,3 @@ function initialiseStickerbook() {
     	}
     }
 }
-
