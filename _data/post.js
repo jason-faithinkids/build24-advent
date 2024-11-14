@@ -18,6 +18,8 @@ async function wpPosts() {
           id: p.id,
           body: p.body,
           podcast: extractPodcastSlug(p.podcast),
+          scripture: p.scripture,
+          scriptureRef: p.scripture_ref,
           video: p.video,
           youtubeId: p.video ? extractYouTubeId(p.video) : undefined,
           thumbnail: p.thumbnail,
