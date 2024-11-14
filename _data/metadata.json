@@ -15,16 +15,16 @@
   },
   "contact": {
     "cont1": "Email",
-    "url1": "mailto:info@faithinkids.org",
+    "url1": "mailto:info@faithinkids.org"
   },
   "author": {
     "name": "Faith in Kids Team",
-    "image": "https://path-to-your-author-image.jpg",  // Replace with actual image URL.
+    "image": "https://path-to-your-author-image.jpg",
     "email": "info@faithinkids.org",
     "url": "https://faithinkids.org"
   },
   "metrix": {
-    "image": "https://path-to-your-featured-image.jpg",  // Replace with your actual image URL.
+    "image": "https://path-to-your-featured-image.jpg",
     "title": "Explore the Nativity Story: Interactive Advent Calendar by Faith in Kids"
   },
   "feed": {
