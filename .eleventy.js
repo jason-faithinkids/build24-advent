@@ -61,6 +61,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("sfx");
+  eleventyConfig.addPassthroughCopy("manifest.json")
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
