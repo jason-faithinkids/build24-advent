@@ -204,6 +204,7 @@ text-align: center;
   .entry-content-sticker {
     display: inline-block;
     color: black;
+    opacity: 0.8;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -212,6 +213,7 @@ text-align: center;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Corrects horizontal centering by offsetting 50% of its own width */
     background-color: white; /* Optional: Ensure visibility */
+    width: auto;
     z-index: 1000; /* Ensure it stays above other elements */
 }
 
