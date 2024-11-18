@@ -307,7 +307,7 @@ function cpt_register_rest_fields() {
     ));
 
     register_rest_field('nativity', 'scripture', array(
-        'get_callback' => 'cpt_get_body_meta',
+        'get_callback' => 'cpt_get_scripture_meta',
         'schema' => array(
             'type' => 'string',
             'description' => 'Scripture for the day',
