@@ -1,5 +1,7 @@
 <div style="view-transition-name: day-{{post.day}}">
 
+	<h1 style="padding:10px 0 30px 0">Day {{post.day}}<h2>
+
 	<div class="container content-center">
 
 		<div class="row entry-content container text-center">
@@ -13,6 +15,16 @@
 			<img class="img-fluid" src="{{post.picture}}"></img>
 		{% endif %}
 
+		{% if post.colouring %}
+		<div class="thumbnail-container" style="text-align: center; max-width: 400px; margin: auto;">
+			<img class="img-fluid" src="{{post.colouring}}" alt="Colouring Image" style="width: 100%; height: auto; display: block; margin-bottom: 10px;">
+			<a href="{{post.colouring}}" download class="btn btn-danger" style="text-decoration: none; padding: 10px 20px; background-color: #ff4c4c; color: white; border-radius: 5px; font-weight: bold; display: inline-block;">
+				<i class="fa fa-download" aria-hidden="true"></i> Download
+			</a>
+		</div>
+		{% endif %}
+
+
 		{% if post.podcast %}
 			<div class="p-4">
 				<audio controls>
@@ -21,6 +33,7 @@
 			</div>
 		{% endif %}
 
+		{% if post.scripture %}
 			<div class="scripture-container">
 				<img src="../../img/bible.svg" alt="Icon" class="svg-icon">
 				<div>
@@ -32,28 +45,34 @@
 					</p>
 				</div>
 			</div>
+		{% endif %}
 
-			<div class="p-4 body-text">
-
-				{{ post.body | nl2br | safe }}
+		<div class="discussion-container">
+				<img src="../../img/discussion.png" alt="Icon" class="png-icon">
+				<div>
+					<p class="discussion"> 
+						{{ post.body | nl2br | safe }}
+					</p>
+				</div>
 			</div>
 		</div>
 
 		<div class="row text-white sticker-collection pb-4">
-			<div class="text-end col-6 col-md-4 offset-md-2">
-				<h3>Click to collect your digital sticker and build up your own nativity scene:</h2>
-			</div>
-			<div class="col-2">
-				<div class="sticker-arrow"></div>
-			</div>
-			<div class="col-4"> 
+			<div class="col-12 d-flex align-items-center justify-content-center">
+				<div class="sticker-text-container">
+					<h3 class="sticker-text">Click to collect your digital sticker<br />and build up your own nativity scene</h3>
+				</div>
 				<div class="sticker-circle">
 					<a href="/stickerbook#{{post.day}}">
-						<img class="img-fluid" src="{{ post.nativity_figure }}">
+						<img class="img-fluid" src="{{ post.nativity_figure }}" alt="Nativity Figure">
 					</a>
 				</div>
 			</div>
 		</div>
+
+		
 	</div>
 
 </div>
+
+{% include "layouts/widget/footer.njk" %}

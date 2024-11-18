@@ -83,10 +83,10 @@ function cpt_render_meta_box($post) {
     <input type="text" id="cpt_scripture" name="cpt_scripture" value="<?php echo esc_attr($scripture); ?>" /><br>
 
     <label for="cpt_scripture_ref"><?php _e('Scripture reference', 'text_domain'); ?></label>
-    <input type="text" id="cpt_scripture_ref" name="cpt_scripture_ref" value="<?php echo esc_attr($scripture); ?>" /><br>
+    <input type="text" id="cpt_scripture_ref" name="cpt_scripture_ref" value="<?php echo esc_attr($scripture_ref); ?>" /><br>
 
     <label for="cpt_heading"><?php _e('Heading', 'text_domain'); ?></label>
-    <input type="text" id="cpt_heading" name="cpt_heading" value="<?php echo esc_attr($scripture); ?>" /><br>
+    <input type="text" id="cpt_heading" name="cpt_heading" value="<?php echo esc_attr($heading); ?>" /><br>
 
     <label for="cpt_podcast"><?php _e('Podcast (URL)', 'text_domain'); ?></label>
     <input type="url" id="cpt_podcast" name="cpt_podcast" value="<?php echo esc_attr($podcast); ?>" /><br>
