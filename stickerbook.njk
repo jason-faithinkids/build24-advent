@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
     $('#stickerbookframe').css({
-      transform: `scale(${zoomFactor})`,
+      transform: scale(${zoomFactor}),
       width: currentWidth * 1/zoomFactor,
     });
 
@@ -22,7 +22,7 @@ $(document).ready(function() {
     const translateY = iTop - newTop;
 
     $('#stickerbookframe').css({
-      transform: `translate(${translateX}px, ${translateY}px) scale(${zoomFactor})`,
+      transform: translate(${translateX}px, ${translateY}px) scale(${zoomFactor}),
     })
 
   });
@@ -30,14 +30,13 @@ $(document).ready(function() {
   // Initial zoom
   $(window).trigger('resize');
 });
+
 </script>
 
-<div class="container entry-content-sticker">
+<div class="entry-content-sticker">
   <h4>Drag and place the stickers you have collected so far.</h4>
 </div>
 
-<div class="container nativity-container" >
-  <iframe id="stickerbookframe" width="100%" height="1000px" scrolling="no" src="/stickerbook/frame" />
+<div class="container" >
+  <iframe id="stickerbookframe" width="1000px" height="100%" scrolling="no" src="/stickerbook/frame" />
 </div>
-
-

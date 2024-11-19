@@ -114,10 +114,7 @@ text-align: center;
     left: 50%; /* Center the logo horizontally */
     transform: translateX(-50%);
   }
-  
-  .logo {
-  }
-  
+
   /* Faith in Kids Button Styling */
   .btn-faithinkids {
     background-color: #009CEE;
@@ -301,6 +298,7 @@ div#zoom {
     opacity: 1; /* Make it visible during the transition */       
 }
 
+
 .lego-brick {
   display: inline-block;
 }
@@ -410,11 +408,11 @@ a:visited.lego-brick {
 }
 
 #stable {
-    width: 700px;
     margin: 0 auto;
+    width: 1000px;
 }
 .stable-bg {
-    width: 700px;
+    height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -470,6 +468,7 @@ h3 {
 .sticker-text-container {
   margin-right: 1rem;
   text-align: right;
+  max-width: 350px;
 }
 
 .sticker-text {
@@ -628,7 +627,7 @@ hr {
 
   .brick-collection .lego-brick {
   font-size: 30px;
-  margin: 0 -30px 0 0;
+  margin-left: -10px;
   }
 
   .red-heading {
@@ -643,10 +642,14 @@ hr {
   background: url('/img/title-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   padding: 10px 5px 15px 5px;
   margin: 0 auto;
   margin-top: -10px;
+}
+
+.sticker-text {
+  font-size: medium;
 }
 
 .mobile-faith-icon {
@@ -656,7 +659,6 @@ hr {
 .stable {
   width: 100%;
 }
-
 
 .stable-bg {
   width: 100%;
