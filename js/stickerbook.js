@@ -3,11 +3,12 @@ function initialiseStickerbook() {
     let offsetX, offsetY;
     let startedDrag = false;
 	var tapped=false;
+    const stickerScale = 0.25;
 
     let startTouch = function(_this, e) {
     	draggingElement = _this;
-        offsetX = e.clientX - $(_this).position().left;
-        offsetY = e.clientY - $(_this).position().top;
+        offsetX = (e.clientX - $(_this).position().left)/stickerScale;
+        offsetY = (e.clientY - $(_this).position().top)/stickerScale; 
         $(_this).css('cursor', 'grabbing');
         startedDrag = false;
     }
@@ -15,10 +16,12 @@ function initialiseStickerbook() {
     	if (draggingElement != null) {
         	var newX = e.clientX - offsetX;
         	var newY = e.clientY - offsetY;
+            requestAnimationFrame(() => {
 
-            $(draggingElement).css({
-                left: newX + 'px',
-                top: newY + 'px'
+                $(draggingElement).css({
+                    left: newX + 'px',
+                    top: newY + 'px'
+                });
             });
 
             // Store this
@@ -35,6 +38,8 @@ function initialiseStickerbook() {
     // Mouse down event to start dragging
     $('.sticker').on('mousedown', function(e) {
         startTouch(this, e);
+        e.preventDefault();
+        e.stopPropagation();
     });
     $('.sticker').on('touchstart', function(e) {    	
         e.preventDefault();
@@ -77,11 +82,13 @@ function initialiseStickerbook() {
 
             console.log({ top,  left, docHeight, docWidth})
             
-            if(top < 0  || left < 0 || top > docHeight || left > docWidth) {
+            if(top < -100  || left < -100 || top > docHeight - 100 || left > docWidth - 100) {
                 $(draggingElement).css({
                     left: 0,
                     top: 0 
                 });
+                window.localStorage.setItem(draggingElement.id + "-x", newX);
+                window.localStorage.setItem(draggingElement.id + "-y", newY)            
             }
         }
         draggingElement = null;
@@ -96,7 +103,8 @@ function initialiseStickerbook() {
     	if (savedStateX != null) {    		
     		$(el).css({
                 left: savedStateX + 'px',
-                top: savedStateY + 'px'
+                top: savedStateY + 'px',
+                transform: `scale(${stickerScale})` 
             }).show();
     	} else {
 
@@ -108,6 +116,9 @@ function initialiseStickerbook() {
     	// Get everything except the hash
     	var anchor = window.top.location.hash.split('#')[1];
     	if ($('#sticker-' + anchor).hasClass('sticker')) {    	
+    		$('#sticker-' + anchor).css({
+                transform: `scale(${stickerScale})` 
+            });
     		$('#sticker-' + anchor).show();
     	}
     }

@@ -6,10 +6,8 @@ permalink: /stickerbook/frame.html
 <style>body { background: none; }</style>
 
 <div id="stickers" class="row">
-  {% for sticker in post %}
-    <div class="sticker" id="sticker-{{sticker.day}}">
-      <img src="{{sticker.nativity_figure}}" draggable="false">
-    </div>
+  {% for sticker in post.reverse() %}
+    <img class="sticker" id="sticker-{{sticker.day}}" src="{{sticker.nativity_figure}}" draggable="false">
   {% endfor %}
 </div>
 

@@ -241,23 +241,25 @@ text-align: center;
     padding: 0;
 }
 
+#stable{
+  position:fixed;
+  top: 500px;
+  z-index: -100;
+}
+
 /* Default for desktop */
 #stickerbookframe {
     width: 100%;
-    height: 1000px; /* Fixed height for desktop */
+    background-color: rgb(255 255 255 / 22%);
+    height: 2000px;
+    border-radius: 20px;
   }
   
   /* Mobile/Tablet Styles (Up to 768px) */
   @media (max-width: 768px) {
-    #stickerbookframe {
-      height: 100vh; /* Full viewport height for mobile/tablet */
-    }
   }
 
   @media (max-width: 575.98px) {
-    #stickerbookframe {
-    width: 100%;
-    height: 1280px; /* Fixed height for desktop */    }
   }
 
 
@@ -388,14 +390,14 @@ a:visited.lego-brick {
 
 
 .sticker {
-    width: 200px;
     margin-right: 10px;
     display: inline-block;
     position: absolute;
     cursor: move;
     display: none;
 }
-.sticker img, .sticker-for-collection img {
+
+.sticker-for-collection img {
     max-width: 200px;
 }
 
@@ -407,23 +409,10 @@ a:visited.lego-brick {
     filter: drop-shadow(5px 5px 10px #555B);
 }
 
-#stable {
-    margin: 0 auto;
-    width: 1000px;
-}
 .stable-bg {
     height: 100%;
+    width: 1000px;
 }
-
-@media (max-width: 768px) {
-    #stable {
-        width: 100%;
-        margin: 0 auto;
-    }
-    .stable-bg {
-        width: 100%;
-    }
-  } 
 
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
@@ -618,55 +607,39 @@ hr {
 }
 
 /* MOBILE */
-
 @media (max-width: 575.98px) {
+    .lego-brick {
+      width: 80px;
+    }
 
-  .lego-brick {
-    width: 80px;
+    .brick-collection .lego-brick {
+    font-size: 30px;
+    margin-left: -10px;
+    }
+
+    .red-heading {
+      color: white;
+      font-size: .9em;
+      padding: 30px 5px 35px 5px;
+      width: 300px;
+      margin: 0 auto;
   }
 
-  .brick-collection .lego-brick {
-  font-size: 30px;
-  margin-left: -10px;
-  }
-
-  .red-heading {
-    color: white;
-    font-size: .9em;
-    padding: 30px 5px 35px 5px;
-    width: 300px;
+  .home-heading {
+    background: url('/img/title-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 10px 5px 15px 5px;
     margin: 0 auto;
-}
+    margin-top: -10px;
+  }
 
-.home-heading {
-  background: url('/img/title-bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  padding: 10px 5px 15px 5px;
-  margin: 0 auto;
-  margin-top: -10px;
-}
+  .sticker-text {
+    font-size: medium;
+  }
 
-.sticker-text {
-  font-size: medium;
-}
-
-.mobile-faith-icon {
-  display: none;
-}
-
-.stable {
-  width: 100%;
-}
-
-.stable-bg {
-  width: 100%;
-}
-
-.nativity-container {
-  overflow: hidden;
-  width: 100%;
-}
-
+  .mobile-faith-icon {
+    display: none;
+  }
 }
