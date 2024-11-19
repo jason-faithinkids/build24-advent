@@ -83,12 +83,9 @@ function initialiseStickerbook() {
             console.log({ top,  left, docHeight, docWidth})
             
             if(top < -100  || left < -100 || top > docHeight - 100 || left > docWidth - 100) {
-                $(draggingElement).css({
-                    left: 0,
-                    top: 0 
-                });
-                window.localStorage.setItem(draggingElement.id + "-x", newX);
-                window.localStorage.setItem(draggingElement.id + "-y", newY)            
+                $(draggingElement).css({ left: 0, top: 0 });
+                window.localStorage.setItem(draggingElement.id + "-x", 0);
+                window.localStorage.setItem(draggingElement.id + "-y", 0);           
             }
         }
         draggingElement = null;
