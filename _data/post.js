@@ -19,12 +19,13 @@ async function wpPosts() {
           body: p.body,
           podcast: extractPodcastSlug(p.podcast),
           scripture: p.scripture,
-          scriptureRef: p.scripture_ref,
+          scripture_ref: p.scripture_ref,
           video: p.video,
           youtubeId: p.video ? extractYouTubeId(p.video) : undefined,
           thumbnail: p.thumbnail,
           picture: p.picture,
           nativity_figure: p.nativity_figure,
+          colouring: p.colouring,
           day: p.day,
           heading: `Advent Day ${p.day}` 
         };
