@@ -3,7 +3,7 @@
  * Plugin Name: Nativity 
  * Description: Adds a nativity day
  * Version: 1.0
- * Author: Your Name
+ * Author: Alasdair Munday
  */
 
 // Exit if accessed directly
