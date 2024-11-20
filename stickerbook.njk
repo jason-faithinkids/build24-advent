@@ -6,16 +6,22 @@ permalink: /stickerbook/index.html
 $(document).ready(function() {
   $(window).on('resize', function() {
     const currentWidth = $('#stickerbookframe').parent().width();
+    const iframeHeight = $('#stickerbookframe').height();
     const {top: iTop, left: iLeft} = $('#stickerbookframe').position();
 
-    const baseWidth = 1000; // Adjust the base width as needed
+    const baseWidth = 4000; // Adjust the base width as needed
     const zoomFactor = currentWidth / baseWidth;
 
 
     $('#stickerbookframe').css({
       transform: `scale(${zoomFactor})`,
-      width: currentWidth * 1/zoomFactor,
+      width: currentWidth * 1/zoomFactor + "px",
     });
+
+    $('#stickerbookframe').parent().css({
+      height: iframeHeight * zoomFactor,
+    });
+
 
     const { top: newTop, left: newLeft } = $('#stickerbookframe').position();
     const translateX = iLeft - newLeft;
@@ -24,7 +30,6 @@ $(document).ready(function() {
     $('#stickerbookframe').css({
       transform: `translate(${translateX}px, ${translateY}px) scale(${zoomFactor})`,
     })
-
   });
 
   // Initial zoom
@@ -37,6 +42,6 @@ $(document).ready(function() {
   <h4>Drag and place the stickers you have collected so far.</h4>
 </div>
 
-<div class="container nativity-container" >
+<div class="nativity-container container" >
   <iframe id="stickerbookframe" width="1000px" height="100%" scrolling="no" src="/stickerbook/frame" />
 </div>
