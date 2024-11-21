@@ -1,13 +1,4 @@
 function zoomIn() {
-	// console.log("Old zoom was " + document.body.style.zoom );
-	// var currentZoom = document.body.style.zoom;
-	// if (currentZoom == null) {
-	// 	currentZoom = 1;
-	// } else {
-	// 	currentZoom = parseFloat(currentZoom);
-	// }
-	// document.body.style.zoom = currentZoom + 1.0;
-	// console.log("New zoom is " + document.body.style.zoom );	
 	$('#content').animate({ 'zoom': 20 }, 400);
 }
 
@@ -71,9 +62,7 @@ function initialiseAdvent() {
 	// Iterate through the array and add the class to elements with higher day numbers
 	dayElements.forEach(function(element) {
 		var dayNumber = parseInt(element.id.replace("day-", ""));
-		console.log("sticker-" + dayNumber + "-x")
 		var savedStateX = window.localStorage.getItem("sticker-" + dayNumber + "-x");
-		console.log(savedStateX)
 		if (dayNumber > today) {
 			$(element).addClass("lego-brick-inactive").prop("disabled", true);
 		} else if(savedStateX != null) {

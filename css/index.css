@@ -250,9 +250,7 @@ text-align: center;
 /* Default for desktop */
 #stickerbookframe {
     width: 100%;
-    background-color: rgb(255 255 255 / 22%);
     height: 6000px;
-    border-radius: 20px;
   }
   
   /* Mobile/Tablet Styles (Up to 768px) */
@@ -412,7 +410,6 @@ a:visited.lego-brick {
 }
 
 .stable-bg {
-    height: 100%;
     width: 4000px;
 }
 
@@ -488,6 +485,9 @@ h3 {
 
 
 .nativity-container {
+    border-radius: 20px;
+    padding: 0;
+    background-color: rgb(255 255 255 / 22%);
     overflow: hidden;
 }
 
