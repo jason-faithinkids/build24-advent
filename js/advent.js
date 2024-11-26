@@ -58,25 +58,27 @@ function getEndTransition(targetPage, stencil) {
 function initialiseAdvent() {
     // Get the current date
     var now = new Date();
-    // Set today only if it's December; otherwise, set it to 0 (inactive for other months)
-    var today = now.getMonth() === 11 ? now.getDate() : 0;
+    var isDecember = now.getMonth() === 11; // Check if it's December
+    var today = isDecember ? now.getDate() : 0; // Use today's date if it's December, otherwise 0
 
     // Select elements with IDs starting with "day-" and convert them to an array
     var dayElements = $("[id^=day-]").toArray();
 
-    // Iterate through the array and add the class to elements with higher day numbers
+    // Iterate through the array and apply classes based on the current day
     dayElements.forEach(function(element) {
         var dayNumber = parseInt(element.id.replace("day-", ""));
         var savedStateX = window.localStorage.getItem("sticker-" + dayNumber + "-x");
-        
-        // Modify the inactive logic to ensure it's only for dates greater than Dec 1
-        if (dayNumber > today && today > 1) {
+
+        if (!isDecember || dayNumber > today) {
+            // If it's not December or the day is in the future, make it inactive
             $(element).addClass("lego-brick-inactive").prop("disabled", true);
         } else if (savedStateX != null) {
+            // If there's saved state, mark it as used
             $(element).addClass("lego-brick-used");
         }
     });
 }
+
 
 
 // function initialiseAdvent() {
