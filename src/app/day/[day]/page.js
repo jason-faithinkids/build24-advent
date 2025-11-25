@@ -7,9 +7,8 @@ export function generateStaticParams() {
   return getAllDays().map((day) => ({ day: day.day.toString() }));
 }
 
-export async function generateMetadata({ params }) {
-  const resolved = await params;
-  const day = getDay(resolved.day);
+export function generateMetadata({ params }) {
+  const day = getDay(params.day);
   if (!day) return {};
   return {
     title: `Day ${day.day} — The Christmas Build-Up`,
@@ -17,28 +16,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// Days that have "With Copyright" images
-const DAYS_WITH_COPYRIGHT_IMAGES = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 22, 23, 24];
-
-export default async function DayPage({ params }) {
-  const resolved = await params;
-  const day = getDay(resolved.day);
+export default function DayPage({ params }) {
+  const day = getDay(params.day);
   if (!day) {
     notFound();
-  }
-
-  // Determine hero image source - always use "With Copyright" images when available
-  let heroImageSrc = null;
-  if (!day.video) {
-    // If day has a "With Copyright" image, always use it (ensure day.day is a number)
-    const dayNumber = Number(day.day);
-    if (DAYS_WITH_COPYRIGHT_IMAGES.includes(dayNumber)) {
-      heroImageSrc = `/img/With Copyright/${dayNumber}.png`;
-    } else {
-      // For days without "With Copyright" images, use heroImage or picture
-      // (even if it's a placeholder, as some days don't have images)
-      heroImageSrc = day.heroImage || day.picture || null;
-    }
   }
 
   return (
@@ -60,13 +41,9 @@ export default async function DayPage({ params }) {
                 allowFullScreen
               />
             </div>
-          ) : heroImageSrc ? (
-            <img 
-              className="img-fluid" 
-              src={heroImageSrc}
-              alt={`Day ${day.day}`}
-            />
-          ) : null}
+          ) : (
+            <img className="img-fluid" src={day.heroImage || day.picture} alt={`Day ${day.day}`} />
+          )}
 
           {day.colouring && (
             <div className="thumbnail-container" style={{ textAlign: 'center', maxWidth: 400, margin: '1.5rem auto' }}>
