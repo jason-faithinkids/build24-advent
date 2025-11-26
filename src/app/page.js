@@ -38,16 +38,28 @@ export default function HomePage() {
   const availableDays = new Set(days.map((d) => d.day));
 
   const [unlockedThrough, setUnlockedThrough] = useState(0);
+  const [showNoticeModal, setShowNoticeModal] = useState(false);
 
   useEffect(() => {
-    setUnlockedThrough(getUnlockedDayNumber());
+    const unlocked = getUnlockedDayNumber();
+    setUnlockedThrough(unlocked);
+    setShowNoticeModal(unlocked === 0);
   }, []);
 
-  const showPreDecemberNotice = unlockedThrough === 0;
   const isDayUnlocked = (day) => availableDays.has(day) && day <= unlockedThrough;
 
   return (
     <div className="advent-home">
+      {showNoticeModal && (
+        <div className="availability-modal-overlay" role="dialog" aria-modal="true">
+          <div className="availability-modal">
+            <p className="availability-modal-message">Come back on the 1st December to open the first box!</p>
+            <button type="button" className="availability-modal-close" onClick={() => setShowNoticeModal(false)}>
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
       <div className="advent-layout">
         <section id="calendar" className="calendar-panel-dark">
           <div className="calendar-scene">
@@ -83,11 +95,6 @@ export default function HomePage() {
           <p className="main-description">
             Explore the Christmas story as a family during Advent through 24 simple, fun and manageable moments.
           </p>
-          {showPreDecemberNotice && (
-            <p className="availability-notice" role="status">
-              Come back on the 1st December to open the first box!
-            </p>
-          )}
 
           <h2 className="section-title">Each week follows the same pattern of content:</h2>
           <ul className="content-list">
