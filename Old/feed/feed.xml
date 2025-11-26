@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>The Christmas Build-Up by Faith in Kids</title>
+	<subtitle>Interactive advent calendar exploring the nativity story for parents and children.</subtitle>
+	
+	<link href="https://christmasbuildup.faithinkids.org/feed/feed.xml" rel="self"/>
+	<link href="https://christmasbuildup.faithinkids.org"/>
+	<updated>2025-11-19T15:56:28Z</updated>
+	<id>https://christmasbuildup.faithinkids.org</id>
+	<author>
+		<name>Faith in Kids Team</name>
+		<email>info@faithinkids.org</email>
+	</author>
+</feed>

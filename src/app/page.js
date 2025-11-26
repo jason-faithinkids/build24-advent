@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { getAllDays } from '../lib/days';
 
+export const dynamic = 'force-dynamic';
+
+const TOTAL_DECEMBER_DAYS = 24;
+const DECEMBER_MONTH_INDEX = 11;
+
 const doorLayout = [
   1, 6, 11, 16, 21,
   2, 7, 12, 17, 22,
@@ -9,9 +14,31 @@ const doorLayout = [
   5, 10, 15, 20,
 ];
 
+function getUnlockedDayNumber() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
+  const decemberStart = new Date(currentYear, DECEMBER_MONTH_INDEX, 1);
+  const decemberEnd = new Date(currentYear, DECEMBER_MONTH_INDEX, TOTAL_DECEMBER_DAYS, 23, 59, 59, 999);
+
+  if (now < decemberStart) {
+    return 0;
+  }
+
+  if (now > decemberEnd) {
+    return TOTAL_DECEMBER_DAYS;
+  }
+
+  return Math.min(now.getDate(), TOTAL_DECEMBER_DAYS);
+}
+
 export default function HomePage() {
   const days = getAllDays();
   const availableDays = new Set(days.map((d) => d.day));
+  const unlockedThrough = getUnlockedDayNumber();
+  const showPreDecemberNotice = unlockedThrough === 0;
+
+  const isDayUnlocked = (day) => availableDays.has(day) && day <= unlockedThrough;
 
   return (
     <div className="advent-home">
@@ -20,16 +47,27 @@ export default function HomePage() {
           <div className="calendar-scene">
             <img src="/img/cover_pic.jpg" alt="Lego nativity scene" className="calendar-bg" />
             <div className="calendar-doors">
-              {doorLayout.map((day) => (
-                <Link
-                  key={day}
-                  href={availableDays.has(day) ? `/day/${day}` : '#'}
-                  className={`advent-door${availableDays.has(day) ? '' : ' lego-brick-inactive'}`}
-                  aria-disabled={!availableDays.has(day)}
-                >
-                  {day}
-                </Link>
-              ))}
+              {doorLayout.map((day) => {
+                const unlocked = isDayUnlocked(day);
+                return (
+                  <Link
+                    key={day}
+                    href={unlocked ? `/day/${day}` : '#'}
+                    className={`advent-door${unlocked ? '' : ' lego-brick-inactive'}`}
+                    aria-disabled={!unlocked}
+                  >
+                    <span className="door-label">{day}</span>
+                    {!unlocked && (
+                      <>
+                        <span className="door-lock" aria-hidden="true">
+                          <i className="fas fa-lock" />
+                        </span>
+                        <span className="sr-only">Locked until December {day}</span>
+                      </>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -39,6 +77,11 @@ export default function HomePage() {
           <p className="main-description">
             Explore the Christmas story as a family during Advent through 24 simple, fun and manageable moments.
           </p>
+          {showPreDecemberNotice && (
+            <p className="availability-notice" role="status">
+              Come back on the 1st December to open the first box!
+            </p>
+          )}
 
           <h2 className="section-title">Each week follows the same pattern of content:</h2>
           <ul className="content-list">

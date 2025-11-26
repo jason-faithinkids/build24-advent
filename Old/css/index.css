@@ -1,0 +1,1120 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --brand-midnight: #030712;
+    --brand-ink: #0f172a;
+    --brand-forest: #134e4a;
+    --brand-berry: #be123c;
+    --brand-gold: #f4a261;
+    --brand-ice: #dbeafe;
+    --text-primary: #0f172a;
+    --text-muted: rgba(15, 23, 42, 0.65);
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --stable-top-gap: clamp(12px, 2vh, 36px);
+    --stable-bottom-gap: clamp(8px, 1.5vh, 24px);
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: "General Sans", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.advent-body {
+    background: url('/img/brick.jpg') repeat;
+    background-size: 117px 72px;
+    background-color: #c41e3a;
+    color: white;
+}
+
+h1, h2, h3 {
+    font-family: "General Sans", "Inter", system-ui, sans-serif;
+    margin: 0;
+}
+
+.advent-body h1,
+.advent-body h2,
+.advent-body h3 {
+    color: white;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 600;
+}
+
+#content {
+    width: 100%;
+    padding: 0;
+}
+
+
+/*    */
+
+.fullscreen-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/img/bg.png') no-repeat center center / cover;
+    opacity: 0.15;
+    filter: saturate(0.5);
+    border-radius: 40px;
+    z-index: -2;
+}
+  
+  
+  .container.entry-content-home {
+    position: relative;
+    z-index: 1; /* Ensure content is above both background and brick overlay */
+  }
+
+
+  
+/* Header Styles */
+.advent-header {
+    background: #c41e3a;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-brick {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: white;
+    line-height: 1.2;
+}
+
+.logo-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.3;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.nav-link-fik {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+.fik-logo-small {
+    height: 24px;
+    width: auto;
+}
+
+.logo {
+    width: 240px;
+}
+
+.logo-mobile {
+    width: 160px;
+}
+
+.mobile-faith-icon {
+    height: 42px;
+}
+
+/* Advent Home Layout */
+.advent-home {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.advent-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Calendar Panel Dark */
+.calendar-panel-dark {
+    background: #1a1a1a;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.calendar-scene {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.calendar-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+}
+
+.calendar-doors {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Description Panel */
+.description-panel {
+    color: white;
+    padding: 2rem;
+}
+
+.main-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.main-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    color: white;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-title-pill {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.content-list li {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.content-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.content-list li strong {
+    color: white;
+    font-weight: 600;
+}
+
+.hero-card--horizontal {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 32px;
+    display: flex;
+    gap: clamp(1rem, 4vw, 4rem);
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.hero-copy {
+    flex: 1 1 45%;
+    position: relative;
+}
+
+.hero-visual {
+    flex: 1 1 55%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-photo-frame {
+    position: relative;
+    border-radius: 36px;
+    overflow: hidden;
+    background: #07080e;
+    box-shadow: inset 0 0 0 6px #fff, 0 35px 80px rgba(0,0,0,0.45);
+}
+
+.hero-photo-frame img:first-child {
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.hero-brick {
+    position: absolute;
+    width: clamp(60px, 9vw, 140px);
+    pointer-events: none;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,0.35));
+}
+
+.hero-brick--pin {
+    top: -25px;
+    left: 0;
+}
+
+.hero-brick--tl { top: -26px; left: -18px; }
+.hero-brick--tr { top: -24px; right: -10px; }
+.hero-brick--bl { bottom: -32px; left: 6px; }
+.hero-brick--br { bottom: -36px; right: -6px; }
+
+.wall-brick {
+    position: absolute;
+    width: clamp(70px, 10vw, 150px);
+    filter: drop-shadow(0 22px 30px rgba(15, 23, 42, 0.35));
+    z-index: 0;
+}
+
+.wall-brick--tl { top: 2%; left: 3%; }
+.wall-brick--tr { top: 4%; right: 4%; }
+.wall-brick--bl { bottom: 6%; left: 6%; }
+.wall-brick--br { bottom: 4%; right: 5%; }
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: #16a34a;
+    font-size: 0.65rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero-layout h1 {
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #0b1428;
+}
+
+.hero-lede {
+    color: #1f2937;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 32rem;
+}
+
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    border-radius: 999px;
+    padding: 0.65rem 1.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(120deg, var(--brand-berry), var(--brand-forest));
+    color: #fff;
+    border: none;
+    box-shadow: 0 14px 25px rgba(2, 6, 23, 0.45);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-primary);
+    background: transparent;
+}
+
+.btn-secondary.light {
+    border-color: rgba(15, 23, 42, 0.2);
+    color: #0f172a;
+}
+
+.calendar-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 30px;
+    padding: clamp(1rem, 2vw, 2.25rem);
+    box-shadow: 0 35px 70px rgba(15, 23, 42, 0.18);
+}
+
+.calendar-panel.floating {
+    align-self: stretch;
+}
+
+.calendar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.calendar-kicker {
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.calendar-title {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 600;
+}
+
+.calendar-link {
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.calendar-subtitle {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Advent Doors - Grid Layout with Space in Middle */
+.advent-door {
+    width: 60px;
+    height: 60px;
+    background: #ffd700;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.advent-door:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.advent-door.lego-brick-used {
+    border: 2px solid transparent;
+}
+
+.advent-door:not(.lego-brick-inactive):not(.lego-brick-used) {
+    border: 2px solid transparent;
+}
+
+/* Only inactive doors (future dates) get white outline */
+.advent-door.lego-brick-inactive {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 215, 0, 0.5);
+}
+
+/* Grid positions - leave center empty (rows 2-3, cols 3-4) for nativity scene */
+.advent-door:nth-child(1) { grid-column: 1; grid-row: 1; }
+.advent-door:nth-child(2) { grid-column: 2; grid-row: 1; }
+.advent-door:nth-child(3) { grid-column: 3; grid-row: 1; }
+.advent-door:nth-child(4) { grid-column: 4; grid-row: 1; }
+.advent-door:nth-child(5) { grid-column: 5; grid-row: 1; }
+.advent-door:nth-child(6) { grid-column: 6; grid-row: 1; }
+.advent-door:nth-child(7) { grid-column: 1; grid-row: 2; }
+.advent-door:nth-child(8) { grid-column: 2; grid-row: 2; }
+/* Skip cols 3-4, row 2 (center) */
+.advent-door:nth-child(9) { grid-column: 5; grid-row: 2; }
+.advent-door:nth-child(10) { grid-column: 6; grid-row: 2; }
+.advent-door:nth-child(11) { grid-column: 1; grid-row: 3; }
+.advent-door:nth-child(12) { grid-column: 2; grid-row: 3; }
+/* Skip cols 3-4, row 3 (center) */
+.advent-door:nth-child(13) { grid-column: 5; grid-row: 3; }
+.advent-door:nth-child(14) { grid-column: 6; grid-row: 3; }
+.advent-door:nth-child(15) { grid-column: 1; grid-row: 4; }
+.advent-door:nth-child(16) { grid-column: 2; grid-row: 4; }
+.advent-door:nth-child(17) { grid-column: 3; grid-row: 4; }
+.advent-door:nth-child(18) { grid-column: 4; grid-row: 4; }
+.advent-door:nth-child(19) { grid-column: 5; grid-row: 4; }
+.advent-door:nth-child(20) { grid-column: 6; grid-row: 4; }
+/* Place remaining 4 doors around edges */
+.advent-door:nth-child(21) { grid-column: 3; grid-row: 1; }
+.advent-door:nth-child(22) { grid-column: 4; grid-row: 1; }
+.advent-door:nth-child(23) { grid-column: 3; grid-row: 4; }
+.advent-door:nth-child(24) { grid-column: 4; grid-row: 4; }
+
+.brick-collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+.brick-collection.compact {
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    gap: 0.5rem;
+}
+
+.day.lego-brick {
+    position: relative;
+    background: linear-gradient(145deg, #ffffff, #f4f6fb);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 22px;
+    padding: 0.75rem 0.75rem;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: #0b1428;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.15);
+}
+
+.day.lego-brick:hover,
+.day.lego-brick:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--brand-gold);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+}
+
+.day.lego-brick-inactive {
+    opacity: 0.6;
+    border-style: dashed;
+    background: linear-gradient(145deg, #f7f7f7, #ebedf1);
+}
+
+.lego-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.lego-label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.62rem;
+    color: rgba(15, 23, 42, 0.55);
+}
+
+.gradient-orbs {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 25% 20%, rgba(190, 18, 60, 0.35), transparent 45%),
+                radial-gradient(circle at 75% 30%, rgba(252, 211, 77, 0.25), transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(20, 184, 166, 0.25), transparent 45%);
+    filter: blur(40px);
+}
+
+.entry-content {
+  display: inline-block;
+  padding: 100px;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  background-color: whitesmoke;
+}
+
+.day-page {
+    padding: clamp(1rem, 3vw, 2.5rem) 0;
+}
+
+.day-heading {
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(2.25rem, 4vw, 3.75rem);
+    margin-bottom: clamp(1rem, 3vw, 2.5rem);
+    color: white;
+}
+
+.day-content {
+    max-width: 960px;
+    width: min(960px, 100%);
+    margin: 0 auto;
+}
+
+.day-entry-card {
+    display: block;
+    width: 100%;
+    padding: clamp(1.5rem, 4vw, 4rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.day-sticker-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.entry-content-home {
+    display: inline-block;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+
+  .entry-content-sticker {
+    display: inline-block;
+    color: white;
+    opacity: 0.95;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: auto;
+    z-index: 1000;
+    text-align: center;
+}
+
+.entry-content-sticker h1,
+.entry-content-sticker h4 {
+    font-size: 0.95rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: 600;
+}
+
+.entry-content-sticker p {
+    font-size: 0.85rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+#stable{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: var(--stable-top-gap);
+  padding-bottom: var(--stable-bottom-gap);
+  padding-left: clamp(8px, 1vw, 24px);
+  padding-right: clamp(8px, 1vw, 24px);
+  box-sizing: border-box;
+}
+
+.stickerbook-canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#stickers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+/* Stickerbook frame */
+  
+  /* Mobile/Tablet Styles (Up to 768px) */
+  @media (max-width: 768px) {
+  }
+
+  @media (max-width: 575.98px) {
+  }
+
+
+@media (max-width: 768px) {
+    .entry-content {
+        padding: 20px;
+      }
+  } 
+
+.collect-sticker {
+    color: white;
+}
+
+div#zoom {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.stencil-overlay {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: width 1s ease, height 1s ease, opacity 0s 1s; /* delay opacity change on transition */
+    opacity: 0; /* Hide the stencil by default */
+}
+
+.stencil-overlay.active {
+    width: 3000px !important;
+    height: 3000px !important;
+    transition: width 1s ease, height 1s ease, opacity 0s;   
+    opacity: 1; /* Make it visible during the transition */       
+}
+
+
+.lego-brick {
+  position: relative;
+}
+
+.lego-brick-used {
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.2), 0 15px 30px rgba(16, 185, 129, 0.2);
+}
+
+.lego-brick-inactive {
+  pointer-events: none;
+  cursor: default;
+}
+
+a:link.lego-brick,
+a:hover.lego-brick,
+a:active.lego-brick,
+a:visited.lego-brick {
+  text-decoration: none;
+}
+
+.lego-brick .stud {
+  position: absolute;
+    width: 26px;
+    height: 26px;
+  border-radius: 50%;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: rgba(15, 23, 42, 0.05);
+    top: 12px;
+    right: 12px;
+  pointer-events: none;
+}
+
+.lego-brick .stud:nth-of-type(2) {
+    right: 44px;
+}
+
+
+.sticker {
+  width: clamp(120px, 7vw, 220px);
+  height: auto;
+  margin-right: 10px;
+  position: absolute;
+  cursor: move;
+  display: none;
+  user-select: none;
+  touch-action: none;
+  will-change: transform;
+}
+
+ .sticker-for-collection img {
+  max-width: 200px;
+}
+
+
+.sticker.flipped {
+    transform: scaleX(-1.0);
+}
+
+.sticker-for-collection {
+    filter: drop-shadow(5px 5px 10px #555B);
+}
+
+.stable-bg {
+    width: auto;
+    height: 100%;
+    max-height: calc(100% - (var(--stable-top-gap) + var(--stable-bottom-gap)));
+    max-width: calc(100% - clamp(16px, 2vw, 48px));
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
+.home-heading {
+    background: url('/img/title-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.red-heading {
+    color: white;
+    font-size: 1em;
+    padding: 50px 10px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.body-text {
+    text-align: left;
+    font-size: .8em;
+    line-height: normal;
+}
+
+
+
+h3 {
+    font-size: 1em;
+}
+
+/* Sticker */
+.sticker-collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sticker-text-container {
+  margin-right: 1rem;
+  text-align: right;
+  max-width: 350px;
+}
+
+.sticker-text {
+  font-family: 'Indie Flower', cursive; /* Replace with your preferred font */
+  font-size: .8em;
+  transform: rotate(-5deg);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.sticker-arrow {
+  width: 100px; /* Adjust arrow size */
+  height: 100px;
+  margin: 0 1rem;
+}
+
+.sticker-circle {
+  position: relative;
+  width: 300px;
+}
+
+.sticker-circle img {
+  width: 100%;
+  height: auto;
+}
+
+
+.container-stable {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.stickerbook-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 180px);
+    max-height: 720px;
+    min-height: 500px;
+    border-radius: 24px;
+    background-color: rgb(255 255 255 / 22%);
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 0 35px 65px rgba(11, 20, 40, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* SCRIPTURE */
+    .scripture-container {
+      display: flex;
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .svg-icon {
+      width: 60px; /* Adjust as needed */
+      height: 60px; /* Adjust as needed */
+      margin-right: 10px;
+    }
+
+    .scripture {
+      font-size: 1.85rem;
+      margin: 0;
+      color: darkred;
+      line-height: normal;
+      font-weight: bold;
+    }
+
+    .reference {
+      font-size: .8em;
+      color: #333;
+      font-weight: bold;
+      margin: 0;
+    }
+
+/* Discussion  */
+.discussion-container {
+  display: flex;
+  margin-top: 50px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.png-icon {
+  width: 40px; /* Adjust as needed */
+  height: 40px; /* Adjust as needed */
+  margin: 10px 20px 0 10px;
+}
+
+.discussion {
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: normal;
+}
+
+.video-container {
+    position:relative;
+    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+}
+
+.advent-video {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%; 
+    height: 100%;
+}
+
+
+/* Footer */
+.footer {
+  background-color: #2A2A2A;
+  color: white;
+}
+
+.footer p {
+  font-size: 0.7em;
+}
+
+.footer-logo {
+  max-width: 250px;
+  height: auto;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00aced; /* Change hover color if needed */
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.alliance-logo {
+  max-width: 300px;
+  height: auto;
+}
+
+hr {
+  border-color: #444;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .advent-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .calendar-panel-dark {
+    min-height: 500px;
+  }
+  
+  .calendar-scene {
+    min-height: 500px;
+  }
+  
+  .calendar-doors {
+    min-height: 500px;
+  }
+  
+  .advent-door {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .advent-home {
+    padding: 1rem;
+  }
+  
+  .advent-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .logo-title {
+    font-size: 0.95rem;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .calendar-panel-dark {
+    padding: 1.5rem;
+  }
+  
+  .description-panel {
+    padding: 1.5rem;
+  }
+  
+  .advent-door {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-card--horizontal {
+    padding: 1.25rem;
+  }
+
+  .lego-number {
+    font-size: 1.6rem;
+  }
+}
