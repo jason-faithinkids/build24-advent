@@ -1,7 +1,8 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAllDays } from '../lib/days';
-
-export const dynamic = 'force-dynamic';
 
 const TOTAL_DECEMBER_DAYS = 24;
 const DECEMBER_MONTH_INDEX = 11;
@@ -35,9 +36,14 @@ function getUnlockedDayNumber() {
 export default function HomePage() {
   const days = getAllDays();
   const availableDays = new Set(days.map((d) => d.day));
-  const unlockedThrough = getUnlockedDayNumber();
-  const showPreDecemberNotice = unlockedThrough === 0;
 
+  const [unlockedThrough, setUnlockedThrough] = useState(0);
+
+  useEffect(() => {
+    setUnlockedThrough(getUnlockedDayNumber());
+  }, []);
+
+  const showPreDecemberNotice = unlockedThrough === 0;
   const isDayUnlocked = (day) => availableDays.has(day) && day <= unlockedThrough;
 
   return (

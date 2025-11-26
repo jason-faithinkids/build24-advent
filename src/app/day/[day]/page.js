@@ -7,8 +7,9 @@ export function generateStaticParams() {
   return getAllDays().map((day) => ({ day: day.day.toString() }));
 }
 
-export function generateMetadata({ params }) {
-  const day = getDay(params.day);
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const day = getDay(resolvedParams.day);
   if (!day) return {};
   return {
     title: `Day ${day.day} — The Christmas Build-Up`,
@@ -16,8 +17,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function DayPage({ params }) {
-  const day = getDay(params.day);
+export default async function DayPage({ params }) {
+  const resolvedParams = await params;
+  const day = getDay(resolvedParams.day);
   if (!day) {
     notFound();
   }
