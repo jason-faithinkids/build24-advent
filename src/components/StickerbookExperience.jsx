@@ -123,6 +123,10 @@ export default function StickerbookExperience({ stickers }) {
     });
   };
 
+  const handleStart = () => {
+    // Ensure drag starts immediately
+  };
+
   const handleStop = (day, data) => {
     const next = { ...positions, [day]: { x: data.x, y: data.y } };
     setPositions(next);
@@ -158,14 +162,18 @@ export default function StickerbookExperience({ stickers }) {
                   nodeRef={nodeRefs[sticker.day]}
                   bounds="parent"
                   position={positions[sticker.day] || { x: 0, y: 0 }}
+                  onStart={handleStart}
                   onStop={(e, data) => handleStop(sticker.day, data)}
+                  cancel=""
+                  enableUserSelectHack={false}
+                  defaultClassNameDragging="sticker-dragging"
                 >
                   <div
                     ref={nodeRefs[sticker.day]}
                     className="sticker-piece"
                     style={{ width: DEFAULT_SIZE.width, height: DEFAULT_SIZE.height }}
                   >
-                    <img src={sticker.image || '/img/stickers/stable-stickers/placeholder.png'} alt={sticker.label} />
+                    <img src={sticker.image || '/img/stickers/stable-stickers/placeholder.png'} alt={sticker.label} draggable="false" />
                   </div>
                 </Draggable>
               ) : null

@@ -1215,6 +1215,7 @@ hr {
   position: absolute;
   cursor: move;
   user-select: none;
+  touch-action: none;
 }
 
 .sticker-piece img {
@@ -1222,6 +1223,12 @@ hr {
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+.sticker-dragging {
+  z-index: 1000;
+  cursor: grabbing !important;
 }
 
 .sticker-sidebar {
