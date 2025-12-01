@@ -293,6 +293,63 @@ h2 {
     background: #a31830;
 }
 
+.cookie-consent {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(640px, calc(100% - 2rem));
+    background: rgba(0, 0, 0, 0.92);
+    color: #fff;
+    border-radius: 20px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 3000;
+}
+
+.cookie-consent__message p {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.cookie-consent__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cookie-btn {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cookie-btn--primary {
+    background: #ffd700;
+    color: #111;
+    border-color: #ffd700;
+}
+
+.cookie-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.cookie-btn--primary:hover {
+    background: #f5c100;
+    color: #111;
+}
+
 .section-title {
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 600;

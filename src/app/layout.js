@@ -1,5 +1,6 @@
 import './globals.css';
 import Header from '../components/Header';
+import CookieConsent from '../components/CookieConsent';
 
 export const metadata = {
   title: 'The Christmas Build-Up',
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           <main id="content" className="flex-1 w-full">
             {children}
           </main>
+          <CookieConsent />
         </div>
       </body>
     </html>
