@@ -3,28 +3,14 @@
 import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'cookie_consent_v1';
-const GTAG_ID = 'G-HF5BTW2KP6';
-const GTAG_SRC = `https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`;
 
-function bootstrapAnalytics() {
-  if (typeof window === 'undefined') return;
-  if (document.querySelector('script[data-gtag="true"]')) return;
+function updateConsent(status) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = GTAG_SRC;
-  script.dataset.gtag = 'true';
-  document.head.appendChild(script);
-
-  const inline = document.createElement('script');
-  inline.dataset.gtagInit = 'true';
-  inline.innerHTML = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${GTAG_ID}');
-  `;
-  document.head.appendChild(inline);
+  const analytics = status === 'accepted' ? 'granted' : 'denied';
+  window.gtag('consent', 'update', {
+    analytics_storage: analytics,
+  });
 }
 
 export default function CookieConsent() {
@@ -33,20 +19,19 @@ export default function CookieConsent() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const stored = localStorage.getItem(STORAGE_KEY);
-    setStatus(stored === 'accepted' || stored === 'declined' ? stored : 'prompt');
-  }, []);
-
-  useEffect(() => {
-    if (status === 'accepted') {
-      bootstrapAnalytics();
+    const effective = stored === 'accepted' || stored === 'declined' ? stored : 'prompt';
+    setStatus(effective);
+    if (effective === 'accepted' || effective === 'declined') {
+      updateConsent(effective);
     }
-  }, [status]);
+  }, []);
 
   const saveStatus = (value) => {
     if (typeof window !== 'undefined') {
       localStorage.setItem(STORAGE_KEY, value);
     }
     setStatus(value);
+    updateConsent(value);
   };
 
   if (status !== 'prompt') {
