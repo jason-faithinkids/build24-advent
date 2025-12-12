@@ -148,6 +148,59 @@ h2 {
     opacity: 0.8;
 }
 
+.nav-days {
+    position: relative;
+}
+
+.nav-days > summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.nav-days > summary::-webkit-details-marker {
+    display: none;
+}
+
+.nav-days[open] > summary {
+    opacity: 0.9;
+}
+
+.nav-days-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 3000;
+    width: min(360px, 92vw);
+    background: rgba(0, 0, 0, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 0.6rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.nav-day-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 10px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.nav-day-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-day-link.is-locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
 .nav-link-fik {
     display: flex;
     align-items: center;
@@ -637,7 +690,7 @@ h2 {
     color: inherit;
 }
 
-/* Grid positions - leave center empty (rows 2-3, cols 3-4) for nativity scene */
+/* Grid positions (24 doors, no overlaps) */
 .advent-door:nth-child(1) { grid-column: 1; grid-row: 1; }
 .advent-door:nth-child(2) { grid-column: 2; grid-row: 1; }
 .advent-door:nth-child(3) { grid-column: 3; grid-row: 1; }
@@ -646,25 +699,22 @@ h2 {
 .advent-door:nth-child(6) { grid-column: 6; grid-row: 1; }
 .advent-door:nth-child(7) { grid-column: 1; grid-row: 2; }
 .advent-door:nth-child(8) { grid-column: 2; grid-row: 2; }
-/* Skip cols 3-4, row 2 (center) */
-.advent-door:nth-child(9) { grid-column: 5; grid-row: 2; }
-.advent-door:nth-child(10) { grid-column: 6; grid-row: 2; }
-.advent-door:nth-child(11) { grid-column: 1; grid-row: 3; }
-.advent-door:nth-child(12) { grid-column: 2; grid-row: 3; }
-/* Skip cols 3-4, row 3 (center) */
-.advent-door:nth-child(13) { grid-column: 5; grid-row: 3; }
-.advent-door:nth-child(14) { grid-column: 6; grid-row: 3; }
-.advent-door:nth-child(15) { grid-column: 1; grid-row: 4; }
-.advent-door:nth-child(16) { grid-column: 2; grid-row: 4; }
-.advent-door:nth-child(17) { grid-column: 3; grid-row: 4; }
-.advent-door:nth-child(18) { grid-column: 4; grid-row: 4; }
-.advent-door:nth-child(19) { grid-column: 5; grid-row: 4; }
-.advent-door:nth-child(20) { grid-column: 6; grid-row: 4; }
-/* Place remaining 4 doors around edges */
-.advent-door:nth-child(21) { grid-column: 3; grid-row: 1; }
-.advent-door:nth-child(22) { grid-column: 4; grid-row: 1; }
-.advent-door:nth-child(23) { grid-column: 3; grid-row: 4; }
-.advent-door:nth-child(24) { grid-column: 4; grid-row: 4; }
+.advent-door:nth-child(9) { grid-column: 3; grid-row: 2; }
+.advent-door:nth-child(10) { grid-column: 4; grid-row: 2; }
+.advent-door:nth-child(11) { grid-column: 5; grid-row: 2; }
+.advent-door:nth-child(12) { grid-column: 6; grid-row: 2; }
+.advent-door:nth-child(13) { grid-column: 1; grid-row: 3; }
+.advent-door:nth-child(14) { grid-column: 2; grid-row: 3; }
+.advent-door:nth-child(15) { grid-column: 3; grid-row: 3; }
+.advent-door:nth-child(16) { grid-column: 4; grid-row: 3; }
+.advent-door:nth-child(17) { grid-column: 5; grid-row: 3; }
+.advent-door:nth-child(18) { grid-column: 6; grid-row: 3; }
+.advent-door:nth-child(19) { grid-column: 1; grid-row: 4; }
+.advent-door:nth-child(20) { grid-column: 2; grid-row: 4; }
+.advent-door:nth-child(21) { grid-column: 3; grid-row: 4; }
+.advent-door:nth-child(22) { grid-column: 4; grid-row: 4; }
+.advent-door:nth-child(23) { grid-column: 5; grid-row: 4; }
+.advent-door:nth-child(24) { grid-column: 6; grid-row: 4; }
 
 .brick-collection {
     display: grid;
@@ -1209,6 +1259,13 @@ hr {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .nav-days-menu {
+    right: auto;
+    left: 0;
+    width: min(420px, 96vw);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   
   .logo-title {
